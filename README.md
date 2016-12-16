@@ -10,7 +10,7 @@ Sample usage:
 trent@birroth:/tmp/xe$ export OTN_USERNAME="demo.user@gmail.com"
 trent@birroth:/tmp/xe$ odl -getFile db11gxe-linux
 demo.user@gmail.com
-Do you accept the XE license agreenement?
+Do you accept the XE license agreement?
 Full terms found here: http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html
 Enter Y for Yes, or N for No: Y
 Enter your OTN password (demo.user@gmail.com):

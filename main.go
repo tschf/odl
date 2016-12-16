@@ -74,7 +74,7 @@ func main() {
 		// 	Proxy: http.ProxyURL(proxyURL),
 		// }
 
-		fmt.Println("Do you accept the XE license agreenement?")
+		fmt.Println("Do you accept the XE license agreement?")
 		fmt.Println("Full terms found here: http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html")
 		fmt.Print("Enter Y for Yes, or N for No: ")
 
