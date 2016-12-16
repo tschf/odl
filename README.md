@@ -7,13 +7,13 @@ The goal isn't to bypass the OTN license agreement, or not to log in - the downl
 Sample usage:
 
 ```bash
-trent@birroth:/tmp/xe$ export OTN_USERNAME="joe.bloggs@gmail.com"
+trent@birroth:/tmp/xe$ export OTN_USERNAME="demo.user@gmail.com"
 trent@birroth:/tmp/xe$ odl -getFile db11gxe-linux
-joe.bloggs@gmail.com
+demo.user@gmail.com
 Do you accept the XE license agreenement?
 Full terms found here: http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html
 Enter Y for Yes, or N for No: Y
-Enter your OTN password (trent.schafer@gmail.com):
+Enter your OTN password (demo.user@gmail.com):
 The file being requested is https://edelivery.oracle.com/akam/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 Download complete.
 trent@birroth:/tmp/xe$ ls -Alth
