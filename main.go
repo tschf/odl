@@ -15,6 +15,8 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/tschf/odl/db"
+
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/crypto/ssh/terminal"
 )
@@ -27,9 +29,13 @@ func checkRedirect(req *http.Request, via []*http.Request) error {
 
 func main() {
 
-	flagDlOption := flag.String("getFile", "", "Specify the file you want to download. Supported files include: db11gxe-linux")
 	flagUser := flag.String("username", "", "Specify the user account that will be logging in and accepting the license agreement. Alternatively, set the environment variable OTN_USERNAME.")
 	flagPassword := flag.String("password", "", "Specify the password that corresponds to your OTN account. Alternatively, set the environment variable OTN_PASSWORD.")
+	flagOs := flag.String("os", "linux", "Specify the desired platform of the software. Should be \"linux\" or \"windows\"")
+	flagComponent := flag.String("component", "db", "Specify the component to grab. Should be \"db\"")
+	flagArchitecture := flag.String("architecture", "amd64", "Specify the desired architecture of the software. Should be \"amd64\" or \"32\"")
+	flagVersion := flag.String("version", "11gXE", "Specify the software version. Should be \"11gXE\"")
+
 	flag.Parse()
 
 	otnUser := *flagUser
@@ -42,40 +48,33 @@ func main() {
 	if len(otnUser) == 0 {
 		log.Fatal("You must specify an OTN username to access OTN files. Set with the flag -username or set the environment variable OTN_USERNAME.")
 	}
-	//
+
 	otnPassword := *flagPassword
 	if len(otnPassword) == 0 {
 		otnPassword = os.Getenv("OTN_PASSWORD")
 	}
 
-	// Following example from: https://gist.github.com/Rabbit52/a8a44c3c4cd514052952
-	// Also see: http://stackoverflow.com/questions/30652577/go-doing-a-get-request-and-building-the-querystring
+	//Get all the files (currently only one file. Eventually, this will be a list)
+
+	xe11gResource := db.GetXeResouce()
+
+	//New data structure to store files in, to provide an index system
+	//key format will be: "component:os:arch:version"
+	var files map[string]*db.Resource
+	files = make(map[string]*db.Resource)
+
+	files[fmt.Sprintf("%s:%s:%s:%s", xe11gResource.Component, xe11gResource.OS, xe11gResource.Arch, xe11gResource.Version)] = xe11gResource
 
 	// Initial prototype. Download Oracle 11g XE (Linux) from the command line
 	// Split this out a bit more in the future to add support for more files
-	if *flagDlOption == "db11gxe-linux" {
+	selectedFile, ok := files[fmt.Sprintf("%s:%s:%s:%s", *flagComponent, *flagOs, *flagArchitecture, *flagVersion)]
 
-		requestFile := "https://edelivery.oracle.com/akam/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip"
-
-		req, _ := http.NewRequest("GET", requestFile, nil)
+	if ok {
+		req, _ := http.NewRequest("GET", selectedFile.File, nil)
 		req.Header.Add("User-Agent", "Mozilla/5.0")
 
-		// proxyURL, err := url.Parse("http://localhost:8888")
-		// if err != nil {
-		// 	fmt.Println("Proxy parse fail")
-		// 	log.Fatal(err)
-		// }
-		//
-		// tr := &http.Transport{
-		// 	TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-		// 	Proxy:           http.ProxyURL(proxyURL),
-		// }
-		// http.DefaultTransport = &http.Transport{
-		// 	Proxy: http.ProxyURL(proxyURL),
-		// }
-
 		fmt.Println("Do you accept the XE license agreement?")
-		fmt.Println("Full terms found here: http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html")
+		fmt.Println(fmt.Sprintf("Full terms found here: %s", selectedFile.License))
 		fmt.Print("Enter Y for Yes, or N for No: ")
 
 		reader := bufio.NewReader(os.Stdin)
@@ -93,14 +92,9 @@ func main() {
 		}
 
 		var cookies []*http.Cookie
-		//
-		otnAcceptCookie := &http.Cookie{
-			Name:   "oraclelicense",
-			Value:  "accept-sqldev-cookie",
-			Domain: ".oracle.com",
-		}
-		cookies = append(cookies, otnAcceptCookie)
-		u, _ := url.Parse(requestFile)
+		cookies = append(cookies, selectedFile.AcceptCookie)
+
+		u, _ := url.Parse(selectedFile.File)
 		cookieJar, _ := cookiejar.New(nil)
 
 		//Set initial jar with a cookie accepting the license agreement
@@ -116,14 +110,15 @@ func main() {
 			CheckRedirect: checkRedirect,
 			Jar:           cookieJar,
 		}
+
 		resp, respErr := client.Do(req)
 		if respErr != nil {
-			fmt.Println("Couldnt read resp")
+			fmt.Println("Couldn't read response")
 			log.Fatal(respErr)
 		}
 		defer resp.Body.Close()
 
-		fmt.Printf("The file being requested is %s\n", requestFile)
+		fmt.Printf("The file being requested is %s\n", selectedFile.File)
 
 		doc, err := goquery.NewDocumentFromResponse(resp)
 		if err != nil {
@@ -131,13 +126,8 @@ func main() {
 			log.Fatal(err)
 		}
 
-		// fmt.Println(doc)
-
 		// https://godoc.org/github.com/PuerkitoBio/goquery
 		pageForms := doc.Find("form")
-
-		// formAction, _ := pageForms.Attr("action")
-		// fmt.Println("POST to>", formAction)
 
 		//POST example: http://stackoverflow.com/questions/19253469/make-a-url-encoded-post-request-using-http-newrequest
 		authData := url.Values{}
@@ -158,7 +148,7 @@ func main() {
 		resp, _ = client.Do(req)
 		defer resp.Body.Close()
 
-		file, err := os.Create(path.Base(requestFile))
+		file, err := os.Create(path.Base(selectedFile.File))
 		defer file.Close()
 		if err != nil {
 			log.Fatal(err)
@@ -170,6 +160,7 @@ func main() {
 		}
 
 		fmt.Println("Download complete.")
+	} else {
+		log.Fatal("Err, Could not find the selected file.")
 	}
-
 }
