@@ -7,8 +7,21 @@ The goal isn't to bypass the OTN license agreement, or not to log in - the downl
 Sample usage:
 
 ```bash
-trent@birroth:/tmp/xe$ export OTN_USERNAME="demo.user@gmail.com"
-trent@birroth:/tmp/xe$ odl -getFile db11gxe-linux
+trent@birroth:/tmp/xe$ odl --help
+Usage of odl:
+  -architecture string
+    	Specify the desired architecture of the software. Should be "amd64" or "32" (default "amd64")
+  -component string
+    	Specify the component to grab. Should be "db" (default "db")
+  -os string
+    	Specify the desired platform of the software. Should be "linux" or "windows" (default "linux")
+  -password string
+    	Specify the password that corresponds to your OTN account. Alternatively, set the environment variable OTN_PASSWORD.
+  -username string
+    	Specify the user account that will be logging in and accepting the license agreement. Alternatively, set the environment variable OTN_USERNAME.
+  -version string
+    	Specify the software version. Should be "11gXE" (default "11gXE")
+trent@birroth:/tmp/xe$ odl
 demo.user@gmail.com
 Do you accept the XE license agreement?
 Full terms found here: http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html
