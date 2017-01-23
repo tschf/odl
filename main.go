@@ -36,6 +36,7 @@ func main() {
 	flagComponent := flag.String("component", "db", "Specify the component to grab. Should be \"db\"")
 	flagArchitecture := flag.String("architecture", "amd64", "Specify the desired architecture of the software. Should be \"amd64\" or \"32\"")
 	flagVersion := flag.String("version", "11gXE", "Specify the software version. Should be \"11gXE\"")
+	flagLang := flag.String("lang", "na", "Specify the language of the software. Should be \"en\" or \"na\"")
 
 	flag.Parse()
 
@@ -64,12 +65,12 @@ func main() {
 	xe11gResources := db.GetXeResouces()
 
 	for _, xe11gResource := range xe11gResources {
-		files[fmt.Sprintf("%s:%s:%s:%s", xe11gResource.Component, xe11gResource.OS, xe11gResource.Arch, xe11gResource.Version)] = xe11gResource
+		files[fmt.Sprintf("%s:%s:%s:%s:%s", xe11gResource.Component, xe11gResource.OS, xe11gResource.Arch, xe11gResource.Version, xe11gResource.Lang)] = xe11gResource
 	}
 
 	// Initial prototype. Download Oracle 11g XE (Linux) from the command line
 	// Split this out a bit more in the future to add support for more files
-	selectedFile, ok := files[fmt.Sprintf("%s:%s:%s:%s", *flagComponent, *flagOs, *flagArchitecture, *flagVersion)]
+	selectedFile, ok := files[fmt.Sprintf("%s:%s:%s:%s:%s", *flagComponent, *flagOs, *flagArchitecture, *flagVersion, *flagLang)]
 
 	if ok {
 		req, _ := http.NewRequest("GET", selectedFile.File, nil)
