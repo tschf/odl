@@ -15,6 +15,7 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/tschf/odl/apex"
 	"github.com/tschf/odl/db"
 	"github.com/tschf/odl/types"
 
@@ -26,6 +27,18 @@ func checkRedirect(req *http.Request, via []*http.Request) error {
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 
 	return nil
+}
+
+func getResources() []*types.Resource {
+
+	xeResources := db.GetXeResouces()
+	apexResources := apex.GetApexResources()
+
+	allResources := xeResources
+	allResources = append(xeResources, apexResources...)
+
+	return allResources
+
 }
 
 func main() {
@@ -61,11 +74,11 @@ func main() {
 	var files map[string]*types.Resource
 	files = make(map[string]*types.Resource)
 
-	//Get all the files (currently only one type (Oracle 11gXE).)
-	xe11gResources := db.GetXeResouces()
+	//Get all the files
+	allResources := getResources()
 
-	for _, xe11gResource := range xe11gResources {
-		files[fmt.Sprintf("%s:%s:%s:%s:%s", xe11gResource.Component, xe11gResource.OS, xe11gResource.Arch, xe11gResource.Version, xe11gResource.Lang)] = xe11gResource
+	for _, resource := range allResources {
+		files[fmt.Sprintf("%s:%s:%s:%s:%s", resource.Component, resource.OS, resource.Arch, resource.Version, resource.Lang)] = resource
 	}
 
 	// Initial prototype. Download Oracle 11g XE (Linux) from the command line
@@ -76,7 +89,7 @@ func main() {
 		req, _ := http.NewRequest("GET", selectedFile.File, nil)
 		req.Header.Add("User-Agent", "Mozilla/5.0")
 
-		fmt.Println("Do you accept the XE license agreement?")
+		fmt.Println("Do you accept the OTN license agreement?")
 		fmt.Println(fmt.Sprintf("Full terms found here: %s", selectedFile.License))
 		fmt.Print("Enter Y for Yes, or N for No: ")
 
