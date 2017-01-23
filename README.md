@@ -9,7 +9,7 @@ Supported software:
 | Description            | OS      | Architecture | Arguments |
 |---                     | ---     | ---          | --- |
 | Oracle Database 11g XE | linux   | amd64        | --component db --os linux --version 11gXE --architecture amd64 |
-| Oracle Database 11g XE | windows | 31           | --component db --os windows --version 11gXE --architecture amd64 |
+| Oracle Database 11g XE | windows | 32           | --component db --os windows --version 11gXE --architecture amd64 |
 | Oracle Database 11g XE | windows | amd64        | --component db --os windows --version 11gXE --architecture 32 |
 
 Sample usage:
