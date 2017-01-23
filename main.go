@@ -16,6 +16,7 @@ import (
 	"syscall"
 
 	"github.com/tschf/odl/db"
+	"github.com/tschf/odl/types"
 
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/crypto/ssh/terminal"
@@ -56,8 +57,8 @@ func main() {
 
 	//New data structure to store files in, to provide an index system
 	//key format will be: "component:os:arch:version"
-	var files map[string]*db.Resource
-	files = make(map[string]*db.Resource)
+	var files map[string]*types.Resource
+	files = make(map[string]*types.Resource)
 
 	//Get all the files (currently only one type (Oracle 11gXE).)
 	xe11gResources := db.GetXeResouces()
