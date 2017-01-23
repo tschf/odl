@@ -9,5 +9,6 @@ type Resource struct {
 	License      string
 	OS           string
 	Arch         string
+	Lang         string
 	AcceptCookie *http.Cookie
 }

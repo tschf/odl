@@ -21,6 +21,7 @@ func GetXeResouces() []*types.Resource {
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "linux",
 		Arch:         "amd64",
+		Lang:         "na",
 		AcceptCookie: acceptCookie,
 	}
 
@@ -31,6 +32,7 @@ func GetXeResouces() []*types.Resource {
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "windows",
 		Arch:         "32",
+		Lang:         "na",
 		AcceptCookie: acceptCookie,
 	}
 
@@ -41,6 +43,7 @@ func GetXeResouces() []*types.Resource {
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "windows",
 		Arch:         "amd64",
+		Lang:         "na",
 		AcceptCookie: acceptCookie,
 	}
 
