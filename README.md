@@ -4,6 +4,12 @@ Automating tests can be a pain, I'm hoping this utility will provide developers 
 
 The goal isn't to bypass the OTN license agreement, or not to log in - the download will not work if you do not provide valid OTN authentication credentials. There are two mechanisms for the username. Pass in the flag: -username <username> to the program; set an environment variable, `OTN_USERNAME`. The password has three mechanisms. Pass in the flag -password; set an environment variable, `OTN_PASSWORD`; Enter the password at run time, when prompted.
 
+Supported software:
+
+| Description            | OS    | Architecture | Arguments |
+|---                     | ---   | ---          | --- |
+| Oracle Database 11g XE | linux | amd64        | --component db --os linux --version 11gXE --architecture amd64 |
+
 Sample usage:
 
 ```bash
