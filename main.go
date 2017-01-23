@@ -54,16 +54,17 @@ func main() {
 		otnPassword = os.Getenv("OTN_PASSWORD")
 	}
 
-	//Get all the files (currently only one file. Eventually, this will be a list)
-
-	xe11gResource := db.GetXeResouce()
-
 	//New data structure to store files in, to provide an index system
 	//key format will be: "component:os:arch:version"
 	var files map[string]*db.Resource
 	files = make(map[string]*db.Resource)
 
-	files[fmt.Sprintf("%s:%s:%s:%s", xe11gResource.Component, xe11gResource.OS, xe11gResource.Arch, xe11gResource.Version)] = xe11gResource
+	//Get all the files (currently only one type (Oracle 11gXE).)
+	xe11gResources := db.GetXeResouces()
+
+	for _, xe11gResource := range xe11gResources {
+		files[fmt.Sprintf("%s:%s:%s:%s", xe11gResource.Component, xe11gResource.OS, xe11gResource.Arch, xe11gResource.Version)] = xe11gResource
+	}
 
 	// Initial prototype. Download Oracle 11g XE (Linux) from the command line
 	// Split this out a bit more in the future to add support for more files

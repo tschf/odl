@@ -12,7 +12,7 @@ type Resource struct {
 	AcceptCookie *http.Cookie
 }
 
-func GetXeResouce() *Resource {
+func GetXeResouces() []*Resource {
 
 	acceptCookie := &http.Cookie{
 		Name:   "oraclelicense",
@@ -30,5 +30,27 @@ func GetXeResouce() *Resource {
 		AcceptCookie: acceptCookie,
 	}
 
-	return linuxXe
+	windowsXe32 := &Resource{
+		Component:    "db",
+		Version:      "11gXE",
+		File:         "https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win32.zip",
+		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
+		OS:           "windows",
+		Arch:         "32",
+		AcceptCookie: acceptCookie,
+	}
+
+	windowsXe64 := &Resource{
+		Component:    "db",
+		Version:      "11gXE",
+		File:         "https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win64.zip",
+		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
+		OS:           "windows",
+		Arch:         "amd64",
+		AcceptCookie: acceptCookie,
+	}
+
+	xeResources := []*Resource{linuxXe, windowsXe32, windowsXe64}
+
+	return xeResources
 }
