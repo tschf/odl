@@ -1,4 +1,11 @@
 #!/bin/bash
+#build.sh: Build the program for multiple platforms for releases.
+#Move into the dist folder.
+#A list of possible platforms can be seen: https://golang.org/doc/install/source#environment
+#Also, referenced: 
+#- https://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5
+#- https://github.com/golang/go/wiki/WindowsCrossCompiling
+
 BASEDIR=$GOPATH/src/github.com/tschf/odl/dist
 
 rm -rf ${BASEDIR}
