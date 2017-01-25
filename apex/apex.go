@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/types/arch"
 )
 
 func GetApexResources() []*types.Resource {
@@ -20,7 +21,7 @@ func GetApexResources() []*types.Resource {
 		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1.zip",
 		License:      "http://www.oracle.com/technetwork/licenses/app-express-lic-152009.html",
 		OS:           "na",
-		Arch:         "na",
+		Arch:         arch.Na,
 		Lang:         "na",
 		AcceptCookie: acceptCookie,
 	}

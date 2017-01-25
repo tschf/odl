@@ -18,6 +18,7 @@ import (
 	"github.com/tschf/odl/apex"
 	"github.com/tschf/odl/db"
 	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/types/arch"
 
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/crypto/ssh/terminal"
@@ -43,11 +44,13 @@ func getResources() []*types.Resource {
 
 func main() {
 
+	var flagArchitecture arch.Arch
+
 	flagUser := flag.String("username", "", "Specify the user account that will be logging in and accepting the license agreement. Alternatively, set the environment variable OTN_USERNAME.")
 	flagPassword := flag.String("password", "", "Specify the password that corresponds to your OTN account. Alternatively, set the environment variable OTN_PASSWORD.")
 	flagOs := flag.String("os", "linux", "Specify the desired platform of the software. Should be \"linux\" or \"windows\"")
 	flagComponent := flag.String("component", "db", "Specify the component to grab. Should be \"db\"")
-	flagArchitecture := flag.String("architecture", "amd64", "Specify the desired architecture of the software. Should be \"amd64\" or \"32\"")
+	flag.Var(&flagArchitecture, "arch", "Specify the desired architecture of the software. Should be \"x86\", \"x64\", or \"na\"")
 	flagVersion := flag.String("version", "11gXE", "Specify the software version. Should be \"11gXE\"")
 	flagLang := flag.String("lang", "na", "Specify the language of the software. Should be \"en\" or \"na\"")
 
@@ -78,12 +81,12 @@ func main() {
 	allResources := getResources()
 
 	for _, resource := range allResources {
-		files[fmt.Sprintf("%s:%s:%s:%s:%s", resource.Component, resource.OS, resource.Arch, resource.Version, resource.Lang)] = resource
+		files[fmt.Sprintf("%s:%s:%v:%s:%s", resource.Component, resource.OS, resource.Arch, resource.Version, resource.Lang)] = resource
 	}
 
 	// Initial prototype. Download Oracle 11g XE (Linux) from the command line
 	// Split this out a bit more in the future to add support for more files
-	selectedFile, ok := files[fmt.Sprintf("%s:%s:%s:%s:%s", *flagComponent, *flagOs, *flagArchitecture, *flagVersion, *flagLang)]
+	selectedFile, ok := files[fmt.Sprintf("%s:%s:%v:%s:%s", *flagComponent, *flagOs, flagArchitecture, *flagVersion, *flagLang)]
 
 	if ok {
 		req, _ := http.NewRequest("GET", selectedFile.File, nil)

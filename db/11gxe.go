@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/types/arch"
 )
 
 func GetXeResouces() []*types.Resource {
@@ -20,7 +21,7 @@ func GetXeResouces() []*types.Resource {
 		File:         "https://edelivery.oracle.com/akam/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip",
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "linux",
-		Arch:         "amd64",
+		Arch:         arch.X64,
 		Lang:         "na",
 		AcceptCookie: acceptCookie,
 	}
@@ -31,7 +32,7 @@ func GetXeResouces() []*types.Resource {
 		File:         "https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win32.zip",
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "windows",
-		Arch:         "32",
+		Arch:         arch.X86,
 		Lang:         "na",
 		AcceptCookie: acceptCookie,
 	}
@@ -42,7 +43,7 @@ func GetXeResouces() []*types.Resource {
 		File:         "https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win64.zip",
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "windows",
-		Arch:         "amd64",
+		Arch:         arch.X64,
 		Lang:         "na",
 		AcceptCookie: acceptCookie,
 	}

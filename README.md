@@ -8,9 +8,9 @@ Supported software:
 
 | Description            | OS      | Architecture | Arguments |
 |---                     | ---     | ---          | ---       |
-| Oracle Database 11g XE | linux   | amd64        | --component db --os linux --version 11gXE --architecture amd64 |
-| Oracle Database 11g XE | windows | 32           | --component db --os windows --version 11gXE --architecture 32 |
-| Oracle Database 11g XE | windows | amd64        | --component db --os windows --version 11gXE --architecture amd64 |
+| Oracle Database 11g XE | linux   | x64          | --component db --os linux --version 11gXE --architecture x64 |
+| Oracle Database 11g XE | windows | x86          | --component db --os windows --version 11gXE --architecture x86 |
+| Oracle Database 11g XE | windows | x64          | --component db --os windows --version 11gXE --architecture x64 |
 | APEX 5.1               | na      | na           | --component apex --os na --version 5.1 --architecture na  |
 
 Sample usage:
@@ -18,8 +18,8 @@ Sample usage:
 ```bash
 trent@birroth:/tmp/xe$ odl --help
 Usage of odl:
-  -architecture string
-    	Specify the desired architecture of the software. Should be "amd64" or "32" (default "amd64")
+  -arch string
+    	Specify the desired architecture of the software. Should be "x86", "x64", or "na" (default na)
   -component string
     	Specify the component to grab. Should be "db" (default "db")
   -os string
