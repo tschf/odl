@@ -14,12 +14,12 @@ const (
 	X64
 )
 
-func (a *Arch) String() string {
-	if *a == X86 {
+func (a Arch) String() string {
+	if a == X86 {
 		return "x86"
-	} else if *a == X64 {
+	} else if a == X64 {
 		return "x64"
-	} else if *a == Na {
+	} else if a == Na {
 		return "na"
 	} else {
 		//Unspported value. Return an empty string
