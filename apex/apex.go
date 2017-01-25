@@ -15,7 +15,10 @@ func GetApexResources() []*types.Resource {
 		Domain: ".oracle.com",
 	}
 
-	apex51 := &types.Resource{
+	apexResources := []*types.Resource{}
+
+	// Add APEX 5.1 - the version for all languages
+	apexResources = append(apexResources, &types.Resource{
 		Component:    "apex",
 		Version:      "5.1",
 		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1.zip",
@@ -24,9 +27,7 @@ func GetApexResources() []*types.Resource {
 		Arch:         arch.Na,
 		Lang:         "na",
 		AcceptCookie: acceptCookie,
-	}
-
-	apexResources := []*types.Resource{apex51}
+	})
 
 	return apexResources
 }
