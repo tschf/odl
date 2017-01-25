@@ -49,9 +49,9 @@ func main() {
 	flagUser := flag.String("username", "", "Specify the user account that will be logging in and accepting the license agreement. Alternatively, set the environment variable OTN_USERNAME.")
 	flagPassword := flag.String("password", "", "Specify the password that corresponds to your OTN account. Alternatively, set the environment variable OTN_PASSWORD.")
 	flagOs := flag.String("os", "linux", "Specify the desired platform of the software. Should be \"linux\" or \"windows\"")
-	flagComponent := flag.String("component", "db", "Specify the component to grab. Should be \"db\"")
+	flagComponent := flag.String("component", "", "Specify the component to grab.")
 	flag.Var(&flagArchitecture, "arch", "Specify the desired architecture of the software. Should be \"x86\", \"x64\", or \"na\"")
-	flagVersion := flag.String("version", "11gXE", "Specify the software version. Should be \"11gXE\"")
+	flagVersion := flag.String("version", "", "Specify the software version. ")
 	flagLang := flag.String("lang", "na", "Specify the language of the software. Should be \"en\" or \"na\"")
 
 	flag.Parse()
