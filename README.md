@@ -8,10 +8,10 @@ Supported software:
 
 | Description            | OS      | Architecture | Arguments |
 |---                     | ---     | ---          | ---       |
-| Oracle Database 11g XE | linux   | x64          | --component db --os linux --version 11gXE --architecture x64 |
-| Oracle Database 11g XE | windows | x86          | --component db --os windows --version 11gXE --architecture x86 |
-| Oracle Database 11g XE | windows | x64          | --component db --os windows --version 11gXE --architecture x64 |
-| APEX 5.1               | na      | na           | --component apex --os na --version 5.1 --architecture na  |
+| Oracle Database 11g XE | linux   | x64          | --component db --os linux --version 11gXE --arch x64 |
+| Oracle Database 11g XE | windows | x86          | --component db --os windows --version 11gXE --arch x86 |
+| Oracle Database 11g XE | windows | x64          | --component db --os windows --version 11gXE --arch x64 |
+| APEX 5.1               | na      | na           | --component apex --os na --version 5.1 --arch na  |
 | SQLcl                  | na      | na           | --component sqlcl --os na --version 4.2  |
 
 Sample usage:
