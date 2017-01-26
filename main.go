@@ -19,6 +19,7 @@ import (
 	"github.com/tschf/odl/db"
 	"github.com/tschf/odl/ords"
 	"github.com/tschf/odl/sqlcl"
+	"github.com/tschf/odl/sqldev"
 	"github.com/tschf/odl/types"
 	"github.com/tschf/odl/types/arch"
 
@@ -38,10 +39,12 @@ func getResources() []*types.Resource {
 	apexResources := apex.GetApexResources()
 	sqlclResources := sqlcl.GetSqlclResources()
 	ordsResources := ords.GetOrdsResources()
+	sqldevResources := sqldev.GetSqldevResources()
 
 	allResources := append(xeResources, apexResources...)
 	allResources = append(allResources, sqlclResources...)
 	allResources = append(allResources, ordsResources...)
+	allResources = append(allResources, sqldevResources...)
 
 	return allResources
 

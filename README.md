@@ -6,12 +6,14 @@ The goal isn't to bypass the OTN license agreement, or not to log in - the downl
 
 Supported software:
 
-| Description            | OS      | Architecture | Language | Version     | Arguments |
-|---                     | ---     | ---          | ---      | ---         | ---       |
-| Oracle Database 11g XE | linux   | x64          | na       | 11gXE       | --component db --os linux --version 11gXE --arch x64 |
-| Oracle Database 11g XE | windows | x86,x64      | na       | 11gXE       | --component db --os windows --version 11gXE --arch x86 |
-| APEX 5.1               | na      | na           | en,na    | 4.2,5.0,5.1 | --component apex --os na --version 5.1 --arch na --lang na  |
-| SQLcl                  | na      | na           | na       | 4.2         | --component sqlcl --os na --version 4.2  |
+| Description              | OS            | Architecture | Language | Version     | Arguments |
+|---                       | ---           | ---          | ---      | ---         | ---       |
+| Oracle Database 11g XE   | linux         | x64          | na       | 11gXE       | --component db --os linux --version 11gXE --arch x64 |
+| Oracle Database 11g XE   | windows       | x86,x64      | na       | 11gXE       | --component db --os windows --version 11gXE --arch x86 |
+| APEX 5.1                 | na            | na           | en,na    | 4.2,5.0,5.1 | --component apex --os na --version 5.1 --arch na --lang na |
+| SQLcl                    | na            | na           | na       | 4.2         | --component sqlcl --os na --version 4.2 |
+| SQL Developer            | windows,linux | na           | na       | 4.1         | --component sqldev --os na --version 4.1 |
+| SQL Developer (incl JDK) | windows       | x64          | na       | 4.1         | --component sqldev-jdk --os windows --version 4.1 --arch x64 |
 
 Sample usage:
 
