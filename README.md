@@ -18,10 +18,12 @@ Sample usage:
 ```bash
 trent@birroth:/tmp/xe$ odl --help
 Usage of odl:
-  -arch string
+  -arch value
     	Specify the desired architecture of the software. Should be "x86", "x64", or "na" (default na)
   -component string
-    	Specify the component to grab. Should be "db" (default "db")
+    	Specify the component to grab.
+  -lang string
+    	Specify the language of the software. Should be "en" or "na" (default "na")
   -os string
     	Specify the desired platform of the software. Should be "linux" or "windows" (default "linux")
   -password string
@@ -29,8 +31,8 @@ Usage of odl:
   -username string
     	Specify the user account that will be logging in and accepting the license agreement. Alternatively, set the environment variable OTN_USERNAME.
   -version string
-    	Specify the software version. Should be "11gXE" (default "11gXE")
-trent@birroth:/tmp/xe$ odl
+    	Specify the software version.
+trent@birroth:/tmp/xe$ odl --component db --os linux --version 11gXE --arch x64
 demo.user@gmail.com
 Do you accept the XE license agreement?
 Full terms found here: http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html
