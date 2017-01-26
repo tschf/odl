@@ -42,5 +42,3 @@ trent@birroth:/tmp/xe$ ls -Alth
 total 302M
 -rw-rw-r-- 1 trent trent 302M Dec 16 16:25 oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 ```
-
-Keep in mind, at this stage it is a very early prototype. It needs to be fleshed out a lot more. The next tasks on the pipeline are to modularise the program more, print the license agreement to the screen and then to include other installation media, with the next priority media files being APEX and SQLcl.
