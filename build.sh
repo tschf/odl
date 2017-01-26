@@ -63,7 +63,7 @@ echo "Done"
 echo "Creating archives"
 cd ${BASEDIR}
 tar cvzf linux.tgz linux_32/ linux_64/ --remove-files
-tar cvzf windows.tgz win_32/ win_64/ --remove-files
+zip -mr windows.zip win_32/ win_64/ 
 tar cvzf osx.tgz osx_32/ osx_64/ --remove-files
 
 echo "All finished. Now, go release!"
