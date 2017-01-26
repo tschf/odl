@@ -12,6 +12,7 @@ Supported software:
 | Oracle Database 11g XE | windows | x86          | --component db --os windows --version 11gXE --arch x86 |
 | Oracle Database 11g XE | windows | x64          | --component db --os windows --version 11gXE --arch x64 |
 | APEX 5.1               | na      | na           | --component apex --os na --version 5.1 --arch na  |
+| APEX 5.1               | na      | na           | --component apex --os na --version 5.1 --arch na --lang en  |
 | SQLcl                  | na      | na           | --component sqlcl --os na --version 4.2  |
 | ORDS                   | na      | na           | --component ords --os na --version 3.0  |
 | ORDS                   | na      | na           | --component ords --os na --version 3.0.1  |
