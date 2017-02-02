@@ -17,6 +17,7 @@ import (
 
 	"github.com/tschf/odl/apex"
 	"github.com/tschf/odl/db"
+	"github.com/tschf/odl/instantclient"
 	"github.com/tschf/odl/ords"
 	"github.com/tschf/odl/sqlcl"
 	"github.com/tschf/odl/sqldev"
@@ -40,11 +41,27 @@ func getResources() []*types.Resource {
 	sqlclResources := sqlcl.GetSqlclResources()
 	ordsResources := ords.GetOrdsResources()
 	sqldevResources := sqldev.GetSqldevResources()
+	// Instant client
+	odbcResources := instantclient.GetIcODBCResources()
+	basicResources := instantclient.GetIcBasicResources()
+	basicLiteResources := instantclient.GetIcBasicLiteResources()
+	jdbcResources := instantclient.GetIcJdbcResources()
+	sdkResources := instantclient.GetIcSdkResources()
+	sqlplusResources := instantclient.GetIcSqlplusResources()
+	wrcResources := instantclient.GetIcWrcResources()
 
 	allResources := append(xeResources, apexResources...)
 	allResources = append(allResources, sqlclResources...)
 	allResources = append(allResources, ordsResources...)
 	allResources = append(allResources, sqldevResources...)
+	//Instant client
+	allResources = append(allResources, odbcResources...)
+	allResources = append(allResources, basicResources...)
+	allResources = append(allResources, basicLiteResources...)
+	allResources = append(allResources, jdbcResources...)
+	allResources = append(allResources, sdkResources...)
+	allResources = append(allResources, sqlplusResources...)
+	allResources = append(allResources, wrcResources...)
 
 	return allResources
 
