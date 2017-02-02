@@ -18,6 +18,7 @@ import (
 	"github.com/tschf/odl/apex"
 	"github.com/tschf/odl/db"
 	"github.com/tschf/odl/instantclient"
+	"github.com/tschf/odl/java"
 	"github.com/tschf/odl/ords"
 	"github.com/tschf/odl/sqlcl"
 	"github.com/tschf/odl/sqldev"
@@ -41,6 +42,8 @@ func getResources() []*types.Resource {
 	sqlclResources := sqlcl.GetSqlclResources()
 	ordsResources := ords.GetOrdsResources()
 	sqldevResources := sqldev.GetSqldevResources()
+	jdkResources := java.GetJdk()
+	jreResources := java.GetJre()
 	// Instant client
 	odbcResources := instantclient.GetIcODBCResources()
 	basicResources := instantclient.GetIcBasicResources()
@@ -54,6 +57,8 @@ func getResources() []*types.Resource {
 	allResources = append(allResources, sqlclResources...)
 	allResources = append(allResources, ordsResources...)
 	allResources = append(allResources, sqldevResources...)
+	allResources = append(allResources, jdkResources...)
+	allResources = append(allResources, jreResources...)
 	//Instant client
 	allResources = append(allResources, odbcResources...)
 	allResources = append(allResources, basicResources...)
@@ -114,6 +119,9 @@ func main() {
 	selectedFile, ok := files[fmt.Sprintf("%s:%s:%v:%s:%s", *flagComponent, *flagOs, flagArchitecture, *flagVersion, *flagLang)]
 
 	if ok {
+
+		fmt.Println("Requested file", selectedFile.Component)
+
 		req, _ := http.NewRequest("GET", selectedFile.File, nil)
 		req.Header.Add("User-Agent", "Mozilla/5.0")
 
@@ -126,13 +134,6 @@ func main() {
 
 		if strings.TrimSpace(licenseAccept) != "Y" {
 			log.Fatal("You must accept the license agreement in order to download. Exiting now.")
-		}
-
-		if len(otnPassword) == 0 {
-			fmt.Printf("Enter your OTN password (%s):", otnUser)
-			consolePass, _ := terminal.ReadPassword(int(syscall.Stdin))
-
-			otnPassword = string(consolePass)
 		}
 
 		var cookies []*http.Cookie
@@ -164,33 +165,42 @@ func main() {
 
 		fmt.Printf("The file being requested is %s\n", selectedFile.File)
 
-		doc, err := goquery.NewDocumentFromResponse(resp)
-		if err != nil {
-			fmt.Println("Error")
-			log.Fatal(err)
+		if !selectedFile.SkipAuth {
+
+			if len(otnPassword) == 0 {
+				fmt.Printf("Enter your OTN password (%s):", otnUser)
+				consolePass, _ := terminal.ReadPassword(int(syscall.Stdin))
+
+				otnPassword = string(consolePass)
+			}
+
+			doc, err := goquery.NewDocumentFromResponse(resp)
+			if err != nil {
+				fmt.Println("Error")
+				log.Fatal(err)
+			}
+
+			// https://godoc.org/github.com/PuerkitoBio/goquery
+			pageForms := doc.Find("form")
+
+			//POST example: http://stackoverflow.com/questions/19253469/make-a-url-encoded-post-request-using-http-newrequest
+			authData := url.Values{}
+			pageForms.Find("input").Each(func(index int, el *goquery.Selection) {
+				inputName, _ := el.Attr("name")
+				inputValue, _ := el.Attr("value")
+
+				authData.Set(inputName, inputValue)
+			})
+
+			authData.Set("username", otnUser)
+			authData.Set("password", otnPassword)
+
+			req, _ = http.NewRequest("POST", "https://login.oracle.com/oam/server/sso/auth_cred_submit", bytes.NewBufferString(authData.Encode()))
+			req.Header.Add("User-Agent", "Mozilla/5.0")
+			req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+
+			resp, _ = client.Do(req)
 		}
-
-		// https://godoc.org/github.com/PuerkitoBio/goquery
-		pageForms := doc.Find("form")
-
-		//POST example: http://stackoverflow.com/questions/19253469/make-a-url-encoded-post-request-using-http-newrequest
-		authData := url.Values{}
-		pageForms.Find("input").Each(func(index int, el *goquery.Selection) {
-			inputName, _ := el.Attr("name")
-			inputValue, _ := el.Attr("value")
-
-			authData.Set(inputName, inputValue)
-		})
-
-		authData.Set("username", otnUser)
-		authData.Set("password", otnPassword)
-
-		req, _ = http.NewRequest("POST", "https://login.oracle.com/oam/server/sso/auth_cred_submit", bytes.NewBufferString(authData.Encode()))
-		req.Header.Add("User-Agent", "Mozilla/5.0")
-		req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-
-		resp, _ = client.Do(req)
-		defer resp.Body.Close()
 
 		file, err := os.Create(path.Base(selectedFile.File))
 		defer file.Close()

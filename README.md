@@ -21,6 +21,7 @@ Supported software:
 | Instant client (sdk)       | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-sdk --os windows --version 12.1.0.2.0 --arch x64 |
 | Instant client (odbc)      | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-odbc --os osx --version 12.1.0.2.0 --arch x64 |
 | Instant client (wrc)       | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-wrc --os osx --version 12.1.0.2.0 --arch x64   |
+| Java JDK,JRE               | windows,linux,osx | x86,x64      | na       | 8                                | --component java-jdk --os osx --version 8 --arch x64   |
 
 
 notes:
@@ -28,6 +29,7 @@ notes:
 * Instant client 11.1.0.7.0 not available for OS X
 * No ODBC for 11.2.0.4.0 on OS X
 * No ODBC for Linux x64 on 11.1.0.7.0
+* No JDK/JRE for OSX 32-bit
 
 Sample usage:
 
