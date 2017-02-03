@@ -72,6 +72,29 @@ func getResources() []*types.Resource {
 
 }
 
+// In order to download software, the OTN license agreement must be accepted.
+// This is implemented by two mechanisms:
+// 1. The command line argument `accept-license`
+// 2. Prompting for user input, with a Y/N value where Y indicated truth
+func getLicenseAcceptance(acceptFromFlag bool, licenseURL string) bool {
+
+	if acceptFromFlag {
+		return true
+	}
+
+	// Because the accept flag wasn't passed in, we want to prompt the user
+	// to decide if they'd like to accept the license or not - passing in the
+	// URL to the license agreement
+	fmt.Println("Do you accept the OTN license agreement?")
+	fmt.Println(fmt.Sprintf("Full terms found here: %s", licenseURL))
+	fmt.Print("Enter Y for Yes, or N for No: ")
+
+	reader := bufio.NewReader(os.Stdin)
+	strLicenseAccepted, _ := reader.ReadString('\n')
+
+	return strings.TrimSpace(strLicenseAccepted) == "Y"
+}
+
 func main() {
 
 	var flagArchitecture arch.Arch
@@ -130,20 +153,10 @@ func main() {
 		// (accept-license), or if that is not set, prompted the user for input
 		// which accepts a Y/N value. Only if the user inputs Y does that
 		// indicate acceptance of the license.
-		var strLicenseAccepted string
-		if !*flagAcceptLicense {
-			fmt.Println("Do you accept the OTN license agreement?")
-			fmt.Println(fmt.Sprintf("Full terms found here: %s", selectedFile.License))
-			fmt.Print("Enter Y for Yes, or N for No: ")
 
-			reader := bufio.NewReader(os.Stdin)
-			strLicenseAccepted, _ = reader.ReadString('\n')
-		}
+		otnLicenseAccepted := getLicenseAcceptance(*flagAcceptLicense, selectedFile.License)
 
-		// ..so here, at least one of `strLicenseAccepted`(string/user input) or
-		// flagAcceptLicense (bool,command flag) needs to be set to the `true`
-		// equivelant
-		if strings.TrimSpace(strLicenseAccepted) != "Y" && !*flagAcceptLicense {
+		if !otnLicenseAccepted {
 			fmt.Fprint(os.Stderr, "You must accept the license agreement in order to download. Exiting now.\n")
 			os.Exit(1)
 		}
