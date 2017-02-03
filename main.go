@@ -83,6 +83,7 @@ func main() {
 	flag.Var(&flagArchitecture, "arch", "Specify the desired architecture of the software. Should be \"x86\", \"x64\", or \"na\"")
 	flagVersion := flag.String("version", "", "Specify the software version. ")
 	flagLang := flag.String("lang", "na", "Specify the language of the software. Should be \"en\" or \"na\"")
+	flagAcceptLicense := flag.Bool("accept-license", false, "Specify whether or not you accept the OTN license agreement for the nominated software.")
 
 	flag.Parse()
 
@@ -125,15 +126,26 @@ func main() {
 		req, _ := http.NewRequest("GET", selectedFile.File, nil)
 		req.Header.Add("User-Agent", "Mozilla/5.0")
 
-		fmt.Println("Do you accept the OTN license agreement?")
-		fmt.Println(fmt.Sprintf("Full terms found here: %s", selectedFile.License))
-		fmt.Print("Enter Y for Yes, or N for No: ")
+		// The license accepted is done either through a command line flag
+		// (accept-license), or if that is not set, prompted the user for input
+		// which accepts a Y/N value. Only if the user inputs Y does that
+		// indicate acceptance of the license.
+		var strLicenseAccepted string
+		if !*flagAcceptLicense {
+			fmt.Println("Do you accept the OTN license agreement?")
+			fmt.Println(fmt.Sprintf("Full terms found here: %s", selectedFile.License))
+			fmt.Print("Enter Y for Yes, or N for No: ")
 
-		reader := bufio.NewReader(os.Stdin)
-		licenseAccept, _ := reader.ReadString('\n')
+			reader := bufio.NewReader(os.Stdin)
+			strLicenseAccepted, _ = reader.ReadString('\n')
+		}
 
-		if strings.TrimSpace(licenseAccept) != "Y" {
-			log.Fatal("You must accept the license agreement in order to download. Exiting now.")
+		// ..so here, at least one of `strLicenseAccepted`(string/user input) or
+		// flagAcceptLicense (bool,command flag) needs to be set to the `true`
+		// equivelant
+		if strings.TrimSpace(strLicenseAccepted) != "Y" && !*flagAcceptLicense {
+			fmt.Fprint(os.Stderr, "You must accept the license agreement in order to download. Exiting now.\n")
+			os.Exit(1)
 		}
 
 		var cookies []*http.Cookie
