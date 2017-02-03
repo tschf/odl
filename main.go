@@ -173,7 +173,6 @@ func main() {
 		cookieJar.SetCookies(u, cookies)
 
 		client := &http.Client{
-			// Transport: tr,
 			// Need to re-add user agent as Go doesn't propagate them
 			// see: https://groups.google.com/forum/#!topic/golang-nuts/OwGvopYXpwE
 			// and https://github.com/golang/go/issues/4800
