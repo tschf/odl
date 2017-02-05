@@ -3,11 +3,11 @@ package instantclient
 import (
 	"net/http"
 
-	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/resource"
 	"github.com/tschf/odl/types/arch"
 )
 
-func GetIcWrcResources() []*types.Resource {
+func GetIcWrcResources() []*resource.OracleResource {
 
 	acceptCookieIcWinx64 := &http.Cookie{
 		Name:   "oraclelicense",
@@ -39,11 +39,11 @@ func GetIcWrcResources() []*types.Resource {
 		Domain: ".oracle.com",
 	}
 
-	WrcResources := []*types.Resource{}
+	WrcResources := []*resource.OracleResource{}
 
 	// 12.1.0.2.0
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/121020/instantclient-tools-windows.x64-12.1.0.2.0.zip",
@@ -54,7 +54,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/121020/instantclient-tools-nt-12.1.0.2.0.zip",
@@ -65,7 +65,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/oracle-instantclient12.1-tools-12.1.0.2.0-1.x86_64.rpm",
@@ -76,7 +76,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/oracle-instantclient12.1-tools-12.1.0.2.0-1.i386.rpm",
@@ -87,7 +87,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx86,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/instantclient-tools-linux-12.1.0.2.0.zip",
@@ -98,7 +98,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx86,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/instantclient-tools-linux.x64-12.1.0.2.0.zip",
@@ -109,7 +109,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/mac/instantclient/121020/instantclient-tools-macos.x64-12.1.0.2.0.zip",
@@ -120,7 +120,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcOSX,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/mac/instantclient/121020/instantclient-tools-macos.x32-12.1.0.2.0.zip",
@@ -133,7 +133,7 @@ func GetIcWrcResources() []*types.Resource {
 
 	// 11.2.0.4.0
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/11204/instantclient-tools-windows.x64-11.2.0.4.0.zip",
@@ -144,7 +144,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/11204/instantclient-tools-nt-11.2.0.4.0.zip",
@@ -155,7 +155,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/oracle-instantclient11.2-tools-11.2.0.4.0-1.x86_64.rpm",
@@ -166,7 +166,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/instantclient-tools-linux.x64-11.2.0.4.0.zip",
@@ -177,7 +177,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/oracle-instantclient11.2-tools-11.2.0.4.0-1.i386.rpm",
@@ -188,7 +188,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/instantclient-tools-linux-11.2.0.4.0.zip",
@@ -199,7 +199,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/mac/instantclient/11204/instantclient-tools-macos.x64-11.2.0.4.0.zip",
@@ -210,7 +210,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcOSX,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/mac/instantclient/11204/instantclient-tools-macos.x32-11.2.0.4.0.zip",
@@ -223,7 +223,7 @@ func GetIcWrcResources() []*types.Resource {
 
 	// 11.1.0.7.0
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/111070/instantclient-tools-win-x86-64-11.1.0.7.0.zip",
@@ -234,7 +234,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/111070/instantclient-tools-win32-11.1.0.7.0.zip",
@@ -245,7 +245,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/111070/oracle-instantclient11.1-tools-11.1.0.7.0-1.x86_64.rpm",
@@ -256,7 +256,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/111070/tools-11.1.0.7.0-linux-x86_64.zip",
@@ -267,7 +267,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/111070/oracle-instantclient11.1-tools-11.1.0.7.0-1.i386.rpm",
@@ -278,7 +278,7 @@ func GetIcWrcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 	//
-	WrcResources = append(WrcResources, &types.Resource{
+	WrcResources = append(WrcResources, &resource.OracleResource{
 		Component:    "instantclient-wrc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/111070/instantclient-tools-linux32-11.1.0.7.zip",

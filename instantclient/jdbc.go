@@ -3,11 +3,11 @@ package instantclient
 import (
 	"net/http"
 
-	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/resource"
 	"github.com/tschf/odl/types/arch"
 )
 
-func GetIcJdbcResources() []*types.Resource {
+func GetIcJdbcResources() []*resource.OracleResource {
 
 	acceptCookieIcWinx64 := &http.Cookie{
 		Name:   "oraclelicense",
@@ -39,11 +39,11 @@ func GetIcJdbcResources() []*types.Resource {
 		Domain: ".oracle.com",
 	}
 
-	JdbcResources := []*types.Resource{}
+	JdbcResources := []*resource.OracleResource{}
 
 	// 12.1.0.2.0
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/121020/instantclient-jdbc-windows.x64-12.1.0.2.0.zip",
@@ -54,7 +54,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/121020/instantclient-jdbc-nt-12.1.0.2.0.zip",
@@ -65,7 +65,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/oracle-instantclient12.1-jdbc-12.1.0.2.0-1.x86_64.rpm",
@@ -76,7 +76,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/oracle-instantclient12.1-jdbc-12.1.0.2.0-1.i386.rpm",
@@ -87,7 +87,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx86,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/instantclient-jdbc-linux-12.1.0.2.0.zip",
@@ -98,7 +98,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx86,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/instantclient-jdbc-linux.x64-12.1.0.2.0.zip",
@@ -109,7 +109,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/mac/instantclient/121020/instantclient-jdbc-macos.x64-12.1.0.2.0.zip",
@@ -120,7 +120,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcOSX,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "12.1.0.2.0",
 		File:         "https://edelivery.oracle.com/akam/otn/mac/instantclient/121020/instantclient-jdbc-macos.x32-12.1.0.2.0.zip",
@@ -133,7 +133,7 @@ func GetIcJdbcResources() []*types.Resource {
 
 	// 11.2.0.4.0
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/11204/instantclient-jdbc-windows.x64-11.2.0.4.0.zip",
@@ -144,7 +144,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/11204/instantclient-jdbc-nt-11.2.0.4.0.zip",
@@ -155,7 +155,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/oracle-instantclient11.2-jdbc-11.2.0.4.0-1.x86_64.rpm",
@@ -166,7 +166,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/instantclient-jdbc-linux.x64-11.2.0.4.0.zip",
@@ -177,7 +177,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/oracle-instantclient11.2-jdbc-11.2.0.4.0-1.i386.rpm",
@@ -188,7 +188,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/instantclient-jdbc-linux-11.2.0.4.0.zip",
@@ -199,7 +199,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/mac/instantclient/11204/instantclient-jdbc-macos.x64-11.2.0.4.0.zip",
@@ -210,7 +210,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcOSX,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.2.0.4.0",
 		File:         "https://edelivery.oracle.com/akam/otn/mac/instantclient/11204/instantclient-jdbc-macos.x32-11.2.0.4.0.zip",
@@ -223,7 +223,7 @@ func GetIcJdbcResources() []*types.Resource {
 
 	// 11.1.0.7.0
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/111070/instantclient-jdbc-win-x86-64-11.1.0.7.0.zip",
@@ -234,7 +234,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/instantclient/111070/instantclient-jdbc-win32-11.1.0.7.0.zip",
@@ -245,7 +245,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/111070/oracle-instantclient11.1-jdbc-11.1.0.7.0-1.x86_64.rpm",
@@ -256,7 +256,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/111070/jdbc-11.1.0.7.0-linux-x86_64.zip",
@@ -267,7 +267,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/111070/oracle-instantclient11.1-jdbc-11.1.0.7.0-1.i386.rpm",
@@ -278,7 +278,7 @@ func GetIcJdbcResources() []*types.Resource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	JdbcResources = append(JdbcResources, &types.Resource{
+	JdbcResources = append(JdbcResources, &resource.OracleResource{
 		Component:    "instantclient-jdbc",
 		Version:      "11.1.0.7.0",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/instantclient/111070/instantclient-jdbc-linux32-11.1.0.7.zip",

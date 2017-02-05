@@ -3,11 +3,11 @@ package sqldev
 import (
 	"net/http"
 
-	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/resource"
 	"github.com/tschf/odl/types/arch"
 )
 
-func GetSqldevResources() []*types.Resource {
+func GetSqldevResources() []*resource.OracleResource {
 
 	acceptCookie := &http.Cookie{
 		Name:   "oraclelicense",
@@ -15,9 +15,9 @@ func GetSqldevResources() []*types.Resource {
 		Domain: ".oracle.com",
 	}
 
-	sqldevResources := []*types.Resource{}
+	sqldevResources := []*resource.OracleResource{}
 
-	sqldevResources = append(sqldevResources, &types.Resource{
+	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev",
 		Version:      "4.1",
 		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-1.noarch.rpm",
@@ -28,7 +28,7 @@ func GetSqldevResources() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	sqldevResources = append(sqldevResources, &types.Resource{
+	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev",
 		Version:      "4.1",
 		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-no-jre.zip",
@@ -39,7 +39,7 @@ func GetSqldevResources() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	sqldevResources = append(sqldevResources, &types.Resource{
+	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev",
 		Version:      "4.1",
 		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-macosx.app.zip",
@@ -50,7 +50,7 @@ func GetSqldevResources() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	sqldevResources = append(sqldevResources, &types.Resource{
+	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev",
 		Version:      "4.1",
 		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-no-jre.zip",
@@ -61,7 +61,7 @@ func GetSqldevResources() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	sqldevResources = append(sqldevResources, &types.Resource{
+	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev-jdk",
 		Version:      "4.1",
 		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-x64.zip",

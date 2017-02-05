@@ -3,11 +3,11 @@ package java
 import (
 	"net/http"
 
-	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/resource"
 	"github.com/tschf/odl/types/arch"
 )
 
-func GetJre() []*types.Resource {
+func GetJre() []*resource.OracleResource {
 
 	acceptCookie := &http.Cookie{
 		Name:   "oraclelicense",
@@ -15,9 +15,9 @@ func GetJre() []*types.Resource {
 		Domain: ".oracle.com",
 	}
 
-	jreResources := []*types.Resource{}
+	jreResources := []*resource.OracleResource{}
 
-	jreResources = append(jreResources, &types.Resource{
+	jreResources = append(jreResources, &resource.OracleResource{
 		Component:    "java-jre",
 		Version:      "8",
 		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-linux-x64.rpm",
@@ -29,7 +29,7 @@ func GetJre() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	jreResources = append(jreResources, &types.Resource{
+	jreResources = append(jreResources, &resource.OracleResource{
 		Component:    "java-jre",
 		Version:      "8",
 		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-linux-x64.tar.gz",
@@ -41,7 +41,7 @@ func GetJre() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	jreResources = append(jreResources, &types.Resource{
+	jreResources = append(jreResources, &resource.OracleResource{
 		Component:    "java-jre",
 		Version:      "8",
 		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-linux-i586.rpm",
@@ -53,7 +53,7 @@ func GetJre() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	jreResources = append(jreResources, &types.Resource{
+	jreResources = append(jreResources, &resource.OracleResource{
 		Component:    "java-jre",
 		Version:      "8",
 		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-linux-i586.tar.gz",
@@ -65,7 +65,7 @@ func GetJre() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	jreResources = append(jreResources, &types.Resource{
+	jreResources = append(jreResources, &resource.OracleResource{
 		Component:    "java-jre",
 		Version:      "8",
 		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-windows-x64.exe",
@@ -77,7 +77,7 @@ func GetJre() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	jreResources = append(jreResources, &types.Resource{
+	jreResources = append(jreResources, &resource.OracleResource{
 		Component:    "java-jre",
 		Version:      "8",
 		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-windows-i586.exe",
@@ -89,7 +89,7 @@ func GetJre() []*types.Resource {
 		AcceptCookie: acceptCookie,
 	})
 
-	jreResources = append(jreResources, &types.Resource{
+	jreResources = append(jreResources, &resource.OracleResource{
 		Component:    "java-jre",
 		Version:      "8",
 		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jre-8u121-macosx-x64.dmg",

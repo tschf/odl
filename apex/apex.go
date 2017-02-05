@@ -3,11 +3,11 @@ package apex
 import (
 	"net/http"
 
-	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/resource"
 	"github.com/tschf/odl/types/arch"
 )
 
-func GetApexResources() []*types.Resource {
+func GetApexResources() []*resource.OracleResource {
 
 	acceptCookie := &http.Cookie{
 		Name:   "oraclelicense",
@@ -15,10 +15,10 @@ func GetApexResources() []*types.Resource {
 		Domain: ".oracle.com",
 	}
 
-	apexResources := []*types.Resource{}
+	apexResources := []*resource.OracleResource{}
 
 	// Add APEX 5.1 - the version for all languages
-	apexResources = append(apexResources, &types.Resource{
+	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "5.1",
 		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1.zip",
@@ -30,7 +30,7 @@ func GetApexResources() []*types.Resource {
 	})
 
 	// Add APEX 5.1 - the version for english
-	apexResources = append(apexResources, &types.Resource{
+	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "5.1",
 		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1_en.zip",
@@ -42,7 +42,7 @@ func GetApexResources() []*types.Resource {
 	})
 
 	// Add APEX 5.0 - the version for all languages
-	apexResources = append(apexResources, &types.Resource{
+	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "5.0",
 		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.0.4.zip",
@@ -54,7 +54,7 @@ func GetApexResources() []*types.Resource {
 	})
 
 	// Add APEX 5.0 - the version for english
-	apexResources = append(apexResources, &types.Resource{
+	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "5.0",
 		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.0.4_en.zip",
@@ -66,7 +66,7 @@ func GetApexResources() []*types.Resource {
 	})
 
 	// Add APEX 4.2 - the version for all languages
-	apexResources = append(apexResources, &types.Resource{
+	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "4.2",
 		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_4.2.6.zip",
@@ -78,7 +78,7 @@ func GetApexResources() []*types.Resource {
 	})
 
 	// Add APEX 4.2 - the version for english
-	apexResources = append(apexResources, &types.Resource{
+	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "4.2",
 		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_4.2.6_en.zip",

@@ -20,9 +20,9 @@ import (
 	"github.com/tschf/odl/instantclient"
 	"github.com/tschf/odl/java"
 	"github.com/tschf/odl/ords"
+	"github.com/tschf/odl/resource"
 	"github.com/tschf/odl/sqlcl"
 	"github.com/tschf/odl/sqldev"
-	"github.com/tschf/odl/types"
 	"github.com/tschf/odl/types/arch"
 
 	"github.com/PuerkitoBio/goquery"
@@ -35,7 +35,7 @@ func checkRedirect(req *http.Request, via []*http.Request) error {
 	return nil
 }
 
-func getResources() []*types.Resource {
+func getResources() []*resource.OracleResource {
 
 	xeResources := db.GetXeResouces()
 	apexResources := apex.GetApexResources()
@@ -129,8 +129,8 @@ func main() {
 
 	//New data structure to store files in, to provide an index system
 	//key format will be: "component:os:arch:version"
-	var files map[string]*types.Resource
-	files = make(map[string]*types.Resource)
+	var files map[string]*resource.OracleResource
+	files = make(map[string]*resource.OracleResource)
 
 	//Get all the files
 	allResources := getResources()

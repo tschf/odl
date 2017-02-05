@@ -3,11 +3,11 @@ package db
 import (
 	"net/http"
 
-	"github.com/tschf/odl/types"
+	"github.com/tschf/odl/resource"
 	"github.com/tschf/odl/types/arch"
 )
 
-func GetXeResouces() []*types.Resource {
+func GetXeResouces() []*resource.OracleResource {
 
 	acceptCookie := &http.Cookie{
 		Name:   "oraclelicense",
@@ -15,10 +15,10 @@ func GetXeResouces() []*types.Resource {
 		Domain: ".oracle.com",
 	}
 
-	xeResources := []*types.Resource{}
+	xeResources := []*resource.OracleResource{}
 
 	// Oracle 11gXE for Linux, 64-bit
-	xeResources = append(xeResources, &types.Resource{
+	xeResources = append(xeResources, &resource.OracleResource{
 		Component:    "db",
 		Version:      "11gXE",
 		File:         "https://edelivery.oracle.com/akam/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip",
@@ -30,7 +30,7 @@ func GetXeResouces() []*types.Resource {
 	})
 
 	// Oracle 11gXE for Windows, 32-bit
-	xeResources = append(xeResources, &types.Resource{
+	xeResources = append(xeResources, &resource.OracleResource{
 		Component:    "db",
 		Version:      "11gXE",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win32.zip",
@@ -42,7 +42,7 @@ func GetXeResouces() []*types.Resource {
 	})
 
 	// Oracle 11gXE for windows, 64bit
-	xeResources = append(xeResources, &types.Resource{
+	xeResources = append(xeResources, &resource.OracleResource{
 		Component:    "db",
 		Version:      "11gXE",
 		File:         "https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win64.zip",
