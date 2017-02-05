@@ -15,6 +15,7 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/tschf/odl/arch"
 	"github.com/tschf/odl/resource"
 	"github.com/tschf/odl/resource/apex"
 	"github.com/tschf/odl/resource/db"
@@ -23,7 +24,6 @@ import (
 	"github.com/tschf/odl/resource/ords"
 	"github.com/tschf/odl/resource/sqlcl"
 	"github.com/tschf/odl/resource/sqldev"
-	"github.com/tschf/odl/types/arch"
 
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/crypto/ssh/terminal"

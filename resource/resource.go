@@ -3,7 +3,7 @@ package resource
 import (
 	"net/http"
 
-	"github.com/tschf/odl/types/arch"
+	"github.com/tschf/odl/arch"
 )
 
 // OracleResource represents the information about a resource that is hosted

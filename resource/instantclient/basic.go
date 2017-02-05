@@ -3,8 +3,8 @@ package instantclient
 import (
 	"net/http"
 
+	"github.com/tschf/odl/arch"
 	"github.com/tschf/odl/resource"
-	"github.com/tschf/odl/types/arch"
 )
 
 func GetIcBasicResources() []*resource.OracleResource {
