@@ -7,7 +7,7 @@ import (
 	"github.com/tschf/odl/resource"
 )
 
-func GetJdk() []*resource.OracleResource {
+func GetJdkResources() []*resource.OracleResource {
 
 	acceptCookie := &http.Cookie{
 		Name:   "oraclelicense",
