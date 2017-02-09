@@ -12,6 +12,8 @@ import (
 	"path"
 	"syscall"
 
+	pb "gopkg.in/cheggaaa/pb.v1"
+
 	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/PuerkitoBio/goquery"
@@ -107,10 +109,20 @@ func SaveResource(res *resource.OracleResource, otnUser string, otnPassword stri
 			log.Fatal(err)
 		}
 
-		_, err = io.Copy(savedFile, resp.Body)
+		requestTotalSize := resp.ContentLength
+		//Set up progress bar
+		progressBar := pb.New64(requestTotalSize)
+		progressBar.SetUnits(pb.U_BYTES)
+		progressBar.Prefix(fmt.Sprintf("%s:", path.Base(file)))
+		progressBar.Start()
+
+		readerWithProgress := progressBar.NewProxyReader(resp.Body)
+
+		_, err = io.Copy(savedFile, readerWithProgress)
 		if err != nil {
 			log.Fatal(err)
 		}
+		progressBar.Finish()
 	}
 
 }
