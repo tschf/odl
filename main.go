@@ -16,14 +16,7 @@ import (
 	"syscall"
 
 	"github.com/tschf/odl/arch"
-	"github.com/tschf/odl/resource"
-	"github.com/tschf/odl/resource/apex"
-	"github.com/tschf/odl/resource/db"
-	"github.com/tschf/odl/resource/instantclient"
-	"github.com/tschf/odl/resource/java"
-	"github.com/tschf/odl/resource/ords"
-	"github.com/tschf/odl/resource/sqlcl"
-	"github.com/tschf/odl/resource/sqldev"
+	"github.com/tschf/odl/resource/finder"
 
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/crypto/ssh/terminal"
@@ -33,43 +26,6 @@ func checkRedirect(req *http.Request, via []*http.Request) error {
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 
 	return nil
-}
-
-func getResources() []*resource.OracleResource {
-
-	xeResources := db.GetXeResouces()
-	apexResources := apex.GetApexResources()
-	sqlclResources := sqlcl.GetSqlclResources()
-	ordsResources := ords.GetOrdsResources()
-	sqldevResources := sqldev.GetSqldevResources()
-	jdkResources := java.GetJdk()
-	jreResources := java.GetJre()
-	// Instant client
-	odbcResources := instantclient.GetIcODBCResources()
-	basicResources := instantclient.GetIcBasicResources()
-	basicLiteResources := instantclient.GetIcBasicLiteResources()
-	jdbcResources := instantclient.GetIcJdbcResources()
-	sdkResources := instantclient.GetIcSdkResources()
-	sqlplusResources := instantclient.GetIcSqlplusResources()
-	wrcResources := instantclient.GetIcWrcResources()
-
-	allResources := append(xeResources, apexResources...)
-	allResources = append(allResources, sqlclResources...)
-	allResources = append(allResources, ordsResources...)
-	allResources = append(allResources, sqldevResources...)
-	allResources = append(allResources, jdkResources...)
-	allResources = append(allResources, jreResources...)
-	//Instant client
-	allResources = append(allResources, odbcResources...)
-	allResources = append(allResources, basicResources...)
-	allResources = append(allResources, basicLiteResources...)
-	allResources = append(allResources, jdbcResources...)
-	allResources = append(allResources, sdkResources...)
-	allResources = append(allResources, sqlplusResources...)
-	allResources = append(allResources, wrcResources...)
-
-	return allResources
-
 }
 
 // In order to download software, the OTN license agreement must be accepted.
@@ -127,25 +83,9 @@ func main() {
 		otnPassword = os.Getenv("OTN_PASSWORD")
 	}
 
-	//New data structure to store files in, to provide an index system
-	//key format will be: "component:os:arch:version"
-	var files map[string]*resource.OracleResource
-	files = make(map[string]*resource.OracleResource)
-
-	//Get all the files
-	allResources := getResources()
-
-	for _, resource := range allResources {
-		files[fmt.Sprintf("%s:%s:%v:%s:%s", resource.Component, resource.OS, resource.Arch, resource.Version, resource.Lang)] = resource
-	}
-
-	// Initial prototype. Download Oracle 11g XE (Linux) from the command line
-	// Split this out a bit more in the future to add support for more files
-	selectedFile, ok := files[fmt.Sprintf("%s:%s:%v:%s:%s", *flagComponent, *flagOs, flagArchitecture, *flagVersion, *flagLang)]
+	selectedFile, ok := finder.FindResource(*flagComponent, *flagVersion, *flagOs, flagArchitecture, *flagLang)
 
 	if ok {
-
-		fmt.Println("Requested file", selectedFile.Component)
 
 		req, _ := http.NewRequest("GET", selectedFile.File, nil)
 		req.Header.Add("User-Agent", "Mozilla/5.0")
