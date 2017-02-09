@@ -41,9 +41,9 @@ func getLicenseAcceptance(acceptFromFlag bool, licenseURL string) bool {
 	// Because the accept flag wasn't passed in, we want to prompt the user
 	// to decide if they'd like to accept the license or not - passing in the
 	// URL to the license agreement
-	fmt.Println("Do you accept the OTN license agreement?")
-	fmt.Println(fmt.Sprintf("Full terms found here: %s", licenseURL))
-	fmt.Print("Enter Y for Yes, or N for No: ")
+	fmt.Println("Before continuing, you must accept the OTN license agreenment.")
+	fmt.Println(fmt.Sprintf("The full terms can be found here: %s", licenseURL))
+	fmt.Print("Please enter Y if you accept the license agreement: ")
 
 	reader := bufio.NewReader(os.Stdin)
 	strLicenseAccepted, _ := reader.ReadString('\n')
@@ -71,9 +71,7 @@ func main() {
 	if len(otnUser) == 0 {
 		otnUser = os.Getenv("OTN_USERNAME")
 	}
-	//
-	fmt.Println(otnUser)
-	//
+
 	if len(otnUser) == 0 {
 		log.Fatal("You must specify an OTN username to access OTN files. Set with the flag -username or set the environment variable OTN_USERNAME.")
 	}
@@ -86,6 +84,8 @@ func main() {
 	selectedFile, ok := finder.FindResource(*flagComponent, *flagVersion, *flagOs, flagArchitecture, *flagLang)
 
 	if ok {
+
+		fmt.Printf("Beginning download process for %s %s\n", *flagComponent, *flagVersion)
 
 		// The license accepted is done either through a command line flag
 		// (accept-license), or if that is not set, prompted the user for input
@@ -137,20 +137,17 @@ func main() {
 			}
 			defer resp.Body.Close()
 
-			fmt.Printf("The file being requested is %s\n", file)
-
 			if !selectedFile.SkipAuth && requiresAuth {
 
 				if len(otnPassword) == 0 {
-					fmt.Printf("Enter your OTN password (%s):", otnUser)
+					fmt.Printf("To complete the license acceptance, you must enter valid OTN credentials. Please enter your OTN password (%s):", otnUser)
 					consolePass, _ := terminal.ReadPassword(int(syscall.Stdin))
-
+					fmt.Println()
 					otnPassword = string(consolePass)
 				}
 
 				doc, err := goquery.NewDocumentFromResponse(resp)
 				if err != nil {
-					fmt.Println("Error")
 					log.Fatal(err)
 				}
 
@@ -188,6 +185,7 @@ func main() {
 				log.Fatal(err)
 			}
 		}
+		fmt.Println("Download complete.")
 	} else {
 		log.Fatal("Err, Could not find the selected file.")
 	}
