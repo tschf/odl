@@ -25,6 +25,7 @@ func FindResource(componentName string, version string, os string, arch arch.Arc
 		componentResources = apex.GetApexResources()
 	case resource.DB:
 		componentResources = db.GetXeResouces()
+		componentResources = append(componentResources, db.Get12cResouces()...)
 	case resource.INSTANT_CLIENT:
 		componentResources = instantclient.GetIcBasicLiteResources()
 		componentResources = append(componentResources, instantclient.GetIcBasicResources()...)

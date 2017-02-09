@@ -20,7 +20,7 @@ func GetSqldevResources() []*resource.OracleResource {
 	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev",
 		Version:      "4.1",
-		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-1.noarch.rpm",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-1.noarch.rpm"},
 		License:      "http://www.oracle.com/technetwork/licenses/sqldev-license-152021.html",
 		OS:           "linux",
 		Arch:         arch.Na,
@@ -31,7 +31,7 @@ func GetSqldevResources() []*resource.OracleResource {
 	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev",
 		Version:      "4.1",
-		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-no-jre.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-no-jre.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/sqldev-license-152021.html",
 		OS:           "other",
 		Arch:         arch.Na,
@@ -42,7 +42,7 @@ func GetSqldevResources() []*resource.OracleResource {
 	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev",
 		Version:      "4.1",
-		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-macosx.app.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-macosx.app.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/sqldev-license-152021.html",
 		OS:           "osx",
 		Arch:         arch.Na,
@@ -53,7 +53,7 @@ func GetSqldevResources() []*resource.OracleResource {
 	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev",
 		Version:      "4.1",
-		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-no-jre.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-no-jre.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/sqldev-license-152021.html",
 		OS:           "windows",
 		Arch:         arch.Na,
@@ -64,7 +64,7 @@ func GetSqldevResources() []*resource.OracleResource {
 	sqldevResources = append(sqldevResources, &resource.OracleResource{
 		Component:    "sqldev-jdk",
 		Version:      "4.1",
-		File:         "https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-x64.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqldeveloper-4.1.5.21.78-x64.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/sqldev-license-152021.html",
 		OS:           "windows",
 		Arch:         arch.X64,

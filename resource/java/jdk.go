@@ -20,7 +20,7 @@ func GetJdkResources() []*resource.OracleResource {
 	jdkResources = append(jdkResources, &resource.OracleResource{
 		Component:    "java-jdk",
 		Version:      "8",
-		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.rpm",
+		File:         []string{"https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.rpm"},
 		License:      "http://www.oracle.com/technetwork/java/javase/terms/license/index.html",
 		SkipAuth:     true,
 		OS:           "linux",
@@ -32,7 +32,7 @@ func GetJdkResources() []*resource.OracleResource {
 	jdkResources = append(jdkResources, &resource.OracleResource{
 		Component:    "java-jdk",
 		Version:      "8",
-		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz",
+		File:         []string{"https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz"},
 		License:      "http://www.oracle.com/technetwork/java/javase/terms/license/index.html",
 		SkipAuth:     true,
 		OS:           "linux-other",
@@ -44,7 +44,7 @@ func GetJdkResources() []*resource.OracleResource {
 	jdkResources = append(jdkResources, &resource.OracleResource{
 		Component:    "java-jdk",
 		Version:      "8",
-		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-i586.rpm",
+		File:         []string{"https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-i586.rpm"},
 		License:      "http://www.oracle.com/technetwork/java/javase/terms/license/index.html",
 		SkipAuth:     true,
 		OS:           "linux",
@@ -56,7 +56,7 @@ func GetJdkResources() []*resource.OracleResource {
 	jdkResources = append(jdkResources, &resource.OracleResource{
 		Component:    "java-jdk",
 		Version:      "8",
-		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-i586.tar.gz",
+		File:         []string{"https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-i586.tar.gz"},
 		License:      "http://www.oracle.com/technetwork/java/javase/terms/license/index.html",
 		SkipAuth:     true,
 		OS:           "linux-other",
@@ -68,7 +68,7 @@ func GetJdkResources() []*resource.OracleResource {
 	jdkResources = append(jdkResources, &resource.OracleResource{
 		Component:    "java-jdk",
 		Version:      "8",
-		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-windows-x64.exe",
+		File:         []string{"https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-windows-x64.exe"},
 		License:      "http://www.oracle.com/technetwork/java/javase/terms/license/index.html",
 		SkipAuth:     true,
 		OS:           "windows",
@@ -80,7 +80,7 @@ func GetJdkResources() []*resource.OracleResource {
 	jdkResources = append(jdkResources, &resource.OracleResource{
 		Component:    "java-jdk",
 		Version:      "8",
-		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-windows-i586.exe",
+		File:         []string{"https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-windows-i586.exe"},
 		License:      "http://www.oracle.com/technetwork/java/javase/terms/license/index.html",
 		SkipAuth:     true,
 		OS:           "windows",
@@ -92,7 +92,7 @@ func GetJdkResources() []*resource.OracleResource {
 	jdkResources = append(jdkResources, &resource.OracleResource{
 		Component:    "java-jdk",
 		Version:      "8",
-		File:         "https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-macosx-x64.dmg",
+		File:         []string{"https://edelivery.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-macosx-x64.dmg"},
 		License:      "http://www.oracle.com/technetwork/java/javase/terms/license/index.html",
 		SkipAuth:     true,
 		OS:           "osx",

@@ -21,7 +21,7 @@ func GetXeResouces() []*resource.OracleResource {
 	xeResources = append(xeResources, &resource.OracleResource{
 		Component:    "db",
 		Version:      "11gXE",
-		File:         "https://edelivery.oracle.com/akam/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "linux",
 		Arch:         arch.X64,
@@ -33,7 +33,7 @@ func GetXeResouces() []*resource.OracleResource {
 	xeResources = append(xeResources, &resource.OracleResource{
 		Component:    "db",
 		Version:      "11gXE",
-		File:         "https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win32.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win32.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "windows",
 		Arch:         arch.X86,
@@ -45,7 +45,7 @@ func GetXeResouces() []*resource.OracleResource {
 	xeResources = append(xeResources, &resource.OracleResource{
 		Component:    "db",
 		Version:      "11gXE",
-		File:         "https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win64.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/oracle11g/xe/OracleXE112_Win64.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html",
 		OS:           "windows",
 		Arch:         arch.X64,

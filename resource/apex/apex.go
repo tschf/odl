@@ -21,7 +21,7 @@ func GetApexResources() []*resource.OracleResource {
 	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "5.1",
-		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/app-express-lic-152009.html",
 		OS:           "na",
 		Arch:         arch.Na,
@@ -33,7 +33,7 @@ func GetApexResources() []*resource.OracleResource {
 	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "5.1",
-		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1_en.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1_en.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/app-express-lic-152009.html",
 		OS:           "na",
 		Arch:         arch.Na,
@@ -45,7 +45,7 @@ func GetApexResources() []*resource.OracleResource {
 	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "5.0",
-		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.0.4.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.0.4.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/app-express-lic-152009.html",
 		OS:           "na",
 		Arch:         arch.Na,
@@ -57,7 +57,7 @@ func GetApexResources() []*resource.OracleResource {
 	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "5.0",
-		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.0.4_en.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.0.4_en.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/app-express-lic-152009.html",
 		OS:           "na",
 		Arch:         arch.Na,
@@ -69,7 +69,7 @@ func GetApexResources() []*resource.OracleResource {
 	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "4.2",
-		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_4.2.6.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/appexpress/apex_4.2.6.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/app-express-lic-152009.html",
 		OS:           "na",
 		Arch:         arch.Na,
@@ -81,7 +81,7 @@ func GetApexResources() []*resource.OracleResource {
 	apexResources = append(apexResources, &resource.OracleResource{
 		Component:    "apex",
 		Version:      "4.2",
-		File:         "https://edelivery.oracle.com/akam/otn/java/appexpress/apex_4.2.6_en.zip",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/appexpress/apex_4.2.6_en.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/app-express-lic-152009.html",
 		OS:           "na",
 		Arch:         arch.Na,

@@ -15,11 +15,11 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/tschf/odl/arch"
-	"github.com/tschf/odl/resource/finder"
+	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/PuerkitoBio/goquery"
-	"golang.org/x/crypto/ssh/terminal"
+	"github.com/tschf/odl/arch"
+	"github.com/tschf/odl/resource/finder"
 )
 
 func checkRedirect(req *http.Request, via []*http.Request) error {
@@ -87,14 +87,10 @@ func main() {
 
 	if ok {
 
-		req, _ := http.NewRequest("GET", selectedFile.File, nil)
-		req.Header.Add("User-Agent", "Mozilla/5.0")
-
 		// The license accepted is done either through a command line flag
 		// (accept-license), or if that is not set, prompted the user for input
 		// which accepts a Y/N value. Only if the user inputs Y does that
 		// indicate acceptance of the license.
-
 		otnLicenseAccepted := getLicenseAcceptance(*flagAcceptLicense, selectedFile.License)
 
 		if !otnLicenseAccepted {
@@ -105,12 +101,7 @@ func main() {
 		var cookies []*http.Cookie
 		cookies = append(cookies, selectedFile.AcceptCookie)
 
-		u, _ := url.Parse(selectedFile.File)
 		cookieJar, _ := cookiejar.New(nil)
-
-		//Set initial jar with a cookie accepting the license agreement
-		//Example taken from: https://gist.github.com/Rabbit52/a8a44c3c4cd514052952
-		cookieJar.SetCookies(u, cookies)
 
 		client := &http.Client{
 			// Need to re-add user agent as Go doesn't propagate them
@@ -121,64 +112,82 @@ func main() {
 			Jar:           cookieJar,
 		}
 
-		resp, respErr := client.Do(req)
-		if respErr != nil {
-			fmt.Println("Couldn't read response")
-			log.Fatal(respErr)
-		}
-		defer resp.Body.Close()
+		// flag to identify if we need to submit username/password data
+		// to https://login.oracle.com/oam/server/sso/auth_cred_submit. Specifically
+		// some resources include more than one file (such as Oracle 12c EE).
+		// In which case, we only need to submit once.
+		// (todo/test: read response headers to see if auth is required?)
+		requiresAuth := true
 
-		fmt.Printf("The file being requested is %s\n", selectedFile.File)
+		for _, file := range selectedFile.File {
 
-		if !selectedFile.SkipAuth {
+			req, _ := http.NewRequest("GET", file, nil)
+			req.Header.Add("User-Agent", "Mozilla/5.0")
 
-			if len(otnPassword) == 0 {
-				fmt.Printf("Enter your OTN password (%s):", otnUser)
-				consolePass, _ := terminal.ReadPassword(int(syscall.Stdin))
+			u, _ := url.Parse(file)
 
-				otnPassword = string(consolePass)
+			//Set initial jar with a cookie accepting the license agreement
+			//Example taken from: https://gist.github.com/Rabbit52/a8a44c3c4cd514052952
+			cookieJar.SetCookies(u, cookies)
+
+			resp, respErr := client.Do(req)
+			if respErr != nil {
+				fmt.Println("Couldn't read response")
+				log.Fatal(respErr)
+			}
+			defer resp.Body.Close()
+
+			fmt.Printf("The file being requested is %s\n", file)
+
+			if !selectedFile.SkipAuth && requiresAuth {
+
+				if len(otnPassword) == 0 {
+					fmt.Printf("Enter your OTN password (%s):", otnUser)
+					consolePass, _ := terminal.ReadPassword(int(syscall.Stdin))
+
+					otnPassword = string(consolePass)
+				}
+
+				doc, err := goquery.NewDocumentFromResponse(resp)
+				if err != nil {
+					fmt.Println("Error")
+					log.Fatal(err)
+				}
+
+				// https://godoc.org/github.com/PuerkitoBio/goquery
+				pageForms := doc.Find("form")
+
+				//POST example: http://stackoverflow.com/questions/19253469/make-a-url-encoded-post-request-using-http-newrequest
+				authData := url.Values{}
+				pageForms.Find("input").Each(func(index int, el *goquery.Selection) {
+					inputName, _ := el.Attr("name")
+					inputValue, _ := el.Attr("value")
+
+					authData.Set(inputName, inputValue)
+				})
+
+				authData.Set("username", otnUser)
+				authData.Set("password", otnPassword)
+
+				req, _ = http.NewRequest("POST", "https://login.oracle.com/oam/server/sso/auth_cred_submit", bytes.NewBufferString(authData.Encode()))
+				req.Header.Add("User-Agent", "Mozilla/5.0")
+				req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+
+				resp, _ = client.Do(req)
+				requiresAuth = false
 			}
 
-			doc, err := goquery.NewDocumentFromResponse(resp)
+			savedFile, err := os.Create(path.Base(file))
+			defer savedFile.Close()
 			if err != nil {
-				fmt.Println("Error")
 				log.Fatal(err)
 			}
 
-			// https://godoc.org/github.com/PuerkitoBio/goquery
-			pageForms := doc.Find("form")
-
-			//POST example: http://stackoverflow.com/questions/19253469/make-a-url-encoded-post-request-using-http-newrequest
-			authData := url.Values{}
-			pageForms.Find("input").Each(func(index int, el *goquery.Selection) {
-				inputName, _ := el.Attr("name")
-				inputValue, _ := el.Attr("value")
-
-				authData.Set(inputName, inputValue)
-			})
-
-			authData.Set("username", otnUser)
-			authData.Set("password", otnPassword)
-
-			req, _ = http.NewRequest("POST", "https://login.oracle.com/oam/server/sso/auth_cred_submit", bytes.NewBufferString(authData.Encode()))
-			req.Header.Add("User-Agent", "Mozilla/5.0")
-			req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-
-			resp, _ = client.Do(req)
+			_, err = io.Copy(savedFile, resp.Body)
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
-
-		file, err := os.Create(path.Base(selectedFile.File))
-		defer file.Close()
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		_, err = io.Copy(file, resp.Body)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		fmt.Println("Download complete.")
 	} else {
 		log.Fatal("Err, Could not find the selected file.")
 	}

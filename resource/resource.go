@@ -19,8 +19,11 @@ type OracleResource struct {
 	// Version is used to determine which version of the particular component
 	// to download.
 	Version string
-	// File represents the actual location of the specific software.
-	File string
+	// File represents the actual location of the specific software. This needs
+	// to be a list, since some Oracle resources contain more than one file.
+	// One such example is Oracle 12c EE. See:
+	// http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html
+	File []string
 	// License is a URL to the OTN license agreement to the specific software.
 	// The license URL varies between each software download.
 	License string
