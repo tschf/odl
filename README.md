@@ -1,5 +1,7 @@
 # odl (Oracle Download Utility)
 
+![build status](https://travis-ci.org/tschf/odl.svg?branch=master)
+
 Automating tests can be a pain, I'm hoping this utility will provide developers with a quick and easy way to fetch Oracle media files.
 
 The goal isn't to bypass the OTN license agreement, or not to log in - the download will not work if you do not provide valid OTN authentication credentials. There are two mechanisms for the username. Pass in the flag: -username <username> to the program; set an environment variable, `OTN_USERNAME`. The password has three mechanisms. Pass in the flag -password; set an environment variable, `OTN_PASSWORD`; Enter the password at run time, when prompted.
