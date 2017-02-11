@@ -8,23 +8,50 @@ The goal isn't to bypass the OTN license agreement, or not to log in - the downl
 
 Supported software:
 
-| Description                | OS                | Architecture | Language | Version                          | Arguments |
-|---                         | ---               | ---          | ---      | ---                              | ---       |
-| Oracle Database 11g XE     | linux             | x64          | na       | 11gXE                            | --component db --os linux --version 11gXE --arch x64 |
-| Oracle Database 11g XE     | windows           | x86,x64      | na       | 11gXE                            | --component db --os windows --version 11gXE --arch x86 |
-| APEX 5.1                   | na                | na           | en,na    | 4.2,5.0,5.1                      | --component apex --os na --version 5.1 --arch na --lang na |
-| SQLcl                      | na                | na           | na       | 4.2                              | --component sqlcl --os na --version 4.2 |
-| SQL Developer              | windows,linux     | na           | na       | 4.1                              | --component sqldev --os na --version 4.1 |
-| SQL Developer (incl JDK)   | windows           | x64          | na       | 4.1                              | --component sqldev-jdk --os windows --version 4.1 --arch x64 |
-| Instant client (basic)     | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-basic --os windows --version 12.1.0.2.0 --arch x64 |
-| Instant client (basic lite)| windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-basic-lite --os windows --version 12.1.0.2.0 --arch x64 |
-| Instant client (jdbc)      | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-jdbc --os windows --version 12.1.0.2.0 --arch x64 |
-| Instant client (sqlplus)   | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-sqlplus --os windows --version 12.1.0.2.0 --arch x64 |
-| Instant client (sdk)       | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-sdk --os windows --version 12.1.0.2.0 --arch x64 |
-| Instant client (odbc)      | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-odbc --os osx --version 12.1.0.2.0 --arch x64 |
-| Instant client (wrc)       | windows,linux,osx | x86,x64      | na       | 12.1.0.2.0,11.2.0.4.0,11.1.0.7.0 | --component instantclient-wrc --os osx --version 12.1.0.2.0 --arch x64   |
-| Java JDK,JRE               | windows,linux,osx | x86,x64      | na       | 8                                | --component java-jdk --os osx --version 8 --arch x64   |
+| Component                  | Version       | OS                | Arch    | Lang  |
+| ---                        | ---           | ---               | ---     | ---   |
+| apex                       | 4.2 - 5.1     | na                | na      | na,en |
+| db                         | 11gXE         | windows           | x64     | na    |
+| db                         | 11gXE         | linux             | x86,x64 | na    |
+| db                         | 12.1.0.2.0EE  | linux,windows     | x64     | na    |
+| db                         | 12.1.0.2.0SE2 | linux,windows     | x64     | na    |
+| instantclient-basic        | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-basic        | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-basic        | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
+| instantclient-basic-lite   | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-basic-lite   | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-basic-lite   | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
+| instantclient-jdbc         | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-jdbc         | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-jdbc         | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
+| instantclient-odbc         | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-odbc         | 11.2.0.4.0    | linux,windows     | x64,x86 | na    |
+| instantclient-odbc         | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
+| instantclient-sdk          | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-sdk          | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-sdk          | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
+| instantclient-sqlplus      | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-sqlplus      | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-sqlplus      | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
+| instantclient-wrc          | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-wrc          | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
+| instantclient-wrc          | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
+| java-jdk                   | 8             | linux,windows     | x64,x86 | na    |
+| java-jdk                   | 8             | osx               | x64     | na    |
+| java-jre                   | 8             | linux,windows     | x64,x86 | na    |
+| java-jre                   | 8             | osx               | x64     | na    |
+| ords                       | 3.0 - 3.0.9   | na                | na      | na    |
+| sqlcl                      | 4.2           | na                | na      | na    |
+| sqldev                     | 4.1           | linux,windows,osx | na      | na    |
+| sqldev-jdk                 | 4.1           | windows           | x64     | na    |
 
+usage:
+
+Each column in the table above represents an argument. e.g. to download Oracle 11gXE, you would run:
+
+```bash
+odl --component db --version 11gXE --os linux --arch x64
+```
 
 notes:
 
@@ -33,11 +60,11 @@ notes:
 * No ODBC for Linux x64 on 11.1.0.7.0
 * No JDK/JRE for OSX 32-bit
 
-Sample usage:
-
 ```bash
 trent@birroth:/tmp/xe$ odl --help
 Usage of odl:
+  -accept-license
+    	Specify whether or not you accept the OTN license agreement for the nominated software.
   -arch value
     	Specify the desired architecture of the software. Should be "x86", "x64", or "na" (default na)
   -component string
@@ -52,15 +79,8 @@ Usage of odl:
     	Specify the user account that will be logging in and accepting the license agreement. Alternatively, set the environment variable OTN_USERNAME.
   -version string
     	Specify the software version.
-trent@birroth:/tmp/xe$ odl --component db --os linux --version 11gXE --arch x64
-demo.user@gmail.com
-Do you accept the XE license agreement?
-Full terms found here: http://www.oracle.com/technetwork/licenses/database-11g-express-license-459621.html
-Enter Y for Yes, or N for No: Y
-Enter your OTN password (demo.user@gmail.com):
-The file being requested is https://edelivery.oracle.com/akam/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+trent@birroth:/tmp/xe$ odl --component db --os linux --version 11gXE --arch x64 --accept-license
+Beginning download process for db 11gXE
+oracle-xe-11.2.0-1.0.x86_64.rpm.zip: 301.26 MB / 301.26 MB [==============================] 100.00% 5m30s
 Download complete.
-trent@birroth:/tmp/xe$ ls -Alth
-total 302M
--rw-rw-r-- 1 trent trent 302M Dec 16 16:25 oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 ```
