@@ -1,6 +1,6 @@
 # odl (Oracle Download Utility)
 
-![build status](https://travis-ci.org/tschf/odl.svg?branch=master)
+[![build status](https://travis-ci.org/tschf/odl.svg?branch=master)](https://travis-ci.org/tschf/odl)
 
 Automating tests can be a pain, I'm hoping this utility will provide developers with a quick and easy way to fetch Oracle media files.
 
