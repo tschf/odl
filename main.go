@@ -47,6 +47,7 @@ func main() {
 		flagLang          = flag.String("lang", "na", "Specify the language of the software. Should be \"en\" or \"na\"")
 		flagAcceptLicense = flag.Bool("accept-license", false, "Specify whether or not you accept the OTN license agreement for the nominated software.")
 		flagArchitecture  arch.Arch
+		flagSkipExisting  = flag.Bool("skip-if-exists", false, "Specify whether or not you want to skip existing files.")
 	)
 
 	flag.Var(&flagArchitecture, "arch", "Specify the desired architecture of the software. Should be \"x86\", \"x64\", or \"na\"")
@@ -83,7 +84,7 @@ func main() {
 			os.Exit(1)
 		}
 
-		dl.SaveResource(selectedFile, otnUser, otnPassword)
+		dl.SaveResource(selectedFile, otnUser, otnPassword, *flagSkipExisting)
 
 		fmt.Println("Download complete.")
 	} else {

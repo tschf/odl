@@ -1,6 +1,7 @@
 package dl
 
 import (
+	"bufio"
 	"bytes"
 	"fmt"
 	"io"
@@ -10,6 +11,7 @@ import (
 	"net/url"
 	"os"
 	"path"
+	"strings"
 	"syscall"
 
 	pb "gopkg.in/cheggaaa/pb.v1"
@@ -26,7 +28,7 @@ func checkRedirect(req *http.Request, via []*http.Request) error {
 	return nil
 }
 
-func SaveResource(res *resource.OracleResource, otnUser string, otnPassword string) {
+func SaveResource(res *resource.OracleResource, otnUser string, otnPassword string, skipExisting bool) {
 	var cookies []*http.Cookie
 	cookies = append(cookies, res.AcceptCookie)
 
@@ -49,6 +51,24 @@ func SaveResource(res *resource.OracleResource, otnUser string, otnPassword stri
 	requiresAuth := true
 
 	for _, file := range res.File {
+		//Check to see if the file we are requesting to download already exists.
+		//Impl borrowed from: http://stackoverflow.com/questions/12518876/how-to-check-if-a-file-exists-in-go
+		//err will be nil when getting information about a file that exists
+		_, fileStatErr := os.Stat(path.Base(file))
+		fileExists := fileStatErr == nil
+
+		if fileExists && skipExisting {
+			continue
+		} else if fileExists {
+			// The skip existing flag was unset (false), so prompt user at run time
+			fmt.Printf("This file already exists. Would you like to overwrite %s?\n", path.Base(file))
+			fmt.Print("Enter Y to overwrite, or N to skip: ")
+			reader := bufio.NewReader(os.Stdin)
+			strOverwriteFile, _ := reader.ReadString('\n')
+			if strings.TrimSpace(strOverwriteFile) != "Y" {
+				continue
+			}
+		}
 
 		req, _ := http.NewRequest("GET", file, nil)
 		req.Header.Add("User-Agent", "Mozilla/5.0")
