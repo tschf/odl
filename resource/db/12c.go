@@ -63,5 +63,16 @@ func Get12cResouces() []*resource.OracleResource {
 		AcceptCookie: acceptCookie,
 	})
 
+	db12cResources = append(db12cResources, &resource.OracleResource{
+		Component:    "db",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/oracle12c/122010/linuxx64_12201_database.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/standard-license-152015.html",
+		OS:           "linux",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookie,
+	})
+
 	return db12cResources
 }
