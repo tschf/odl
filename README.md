@@ -15,7 +15,7 @@ Supported software:
 | db                         | 11gXE         | linux             | x86,x64 | na    |
 | db                         | 12.1.0.2.0EE  | linux,windows     | x64     | na    |
 | db                         | 12.1.0.2.0SE2 | linux,windows     | x64     | na    |
-| db                         | 12.2.0.1.0    | linux,windows     | x64     | na    |
+| db                         | 12.2.0.1.0    | linux             | x64     | na    |
 | instantclient-basic        | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
 | instantclient-basic        | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
 | instantclient-basic        | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
