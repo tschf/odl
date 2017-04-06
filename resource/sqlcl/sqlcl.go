@@ -20,7 +20,7 @@ func GetSqlclResources() []*resource.OracleResource {
 	sqlClResources = append(sqlClResources, &resource.OracleResource{
 		Component:    "sqlcl",
 		Version:      "4.2",
-		File:         []string{"https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqlcl-4.2.0.16.355.0402-no-jre.zip"},
+		File:         []string{"https://edelivery.oracle.com/akam/otn/java/sqldeveloper/sqlcl-4.2.0.17.096.0933-no-jre.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/sqldev-license-152021.html",
 		OS:           "na",
 		Arch:         arch.Na,
