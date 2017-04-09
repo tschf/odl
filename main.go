@@ -17,9 +17,10 @@ import (
 // This is implemented by two mechanisms:
 // 1. The command line argument `accept-license`
 // 2. Prompting for user input, with a Y/N value where Y indicated truth
-func getLicenseAcceptance(acceptFromFlag bool, licenseURL string) bool {
+func getLicenseAcceptance(acceptFromFlag bool, licenseURL string, user string) bool {
 
 	if acceptFromFlag {
+		fmt.Printf("INFO: You (%s) have nominated you accept the OTN license agreement. Use of this software is tied to that acceptance.\n", user)
 		return true
 	}
 
@@ -77,7 +78,7 @@ func main() {
 		// (accept-license), or if that is not set, prompted the user for input
 		// which accepts a Y/N value. Only if the user inputs Y does that
 		// indicate acceptance of the license.
-		otnLicenseAccepted := getLicenseAcceptance(*flagAcceptLicense, selectedFile.License)
+		otnLicenseAccepted := getLicenseAcceptance(*flagAcceptLicense, selectedFile.License, otnUser)
 
 		if !otnLicenseAccepted {
 			fmt.Fprint(os.Stderr, "You must accept the license agreement in order to download. Exiting now.\n")
