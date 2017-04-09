@@ -1,7 +1,6 @@
 package sqlcl
 
 import (
-	"fmt"
 	"net/http"
 	"path/filepath"
 	"strings"
@@ -17,9 +16,6 @@ func appendWithVersionCheck(resources []*resource.OracleResource, newResource *r
 	// If the start of the latest build matches the major.minor version number
 	// ensure the file URL points to that build
 	if strings.HasPrefix(latestBuild, newResource.Version) {
-
-		fmt.Println("Need to replace version")
-
 		// We only expect one file path in the array, so just directly assign
 		// the first value from the file list
 		sqlclURL := newResource.File[0]
