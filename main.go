@@ -27,7 +27,7 @@ func getLicenseAcceptance(acceptFromFlag bool, licenseURL string, user string) b
 	// Because the accept flag wasn't passed in, we want to prompt the user
 	// to decide if they'd like to accept the license or not - passing in the
 	// URL to the license agreement
-	fmt.Println("Before continuing, you must accept the OTN license agreenment.")
+	fmt.Println("Before continuing, you must accept the OTN license agreement.")
 	fmt.Println(fmt.Sprintf("The full terms can be found here: %s", licenseURL))
 	fmt.Print("Please enter Y if you accept the license agreement: ")
 
