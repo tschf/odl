@@ -6,7 +6,19 @@ Automating tests can be a pain, I'm hoping this utility will provide developers 
 
 The goal isn't to bypass the OTN license agreement, or not to log in - the download will not work if you do not provide valid OTN authentication credentials. There are two mechanisms for the username. Pass in the flag: -username <username> to the program; set an environment variable, `OTN_USERNAME`. The password has three mechanisms. Pass in the flag -password; set an environment variable, `OTN_PASSWORD`; Enter the password at run time, when prompted.
 
-Supported software:
+## Install
+
+To grab the latest build, assuming you have `golang` installed, run:
+
+```
+go get https://github.com/tschf/odl
+```
+
+Then, so long as `$GOPATH/bin` is in your PATH, you should be able to run `odl`.
+
+Or, grab the latest release: [https://github.com/tschf/odl/releases](https://github.com/tschf/odl/releases), which includes binaries for OSX, Windows and Linux, for 32 and 64-bit architecture's. Note, the compiled binaries may not include the latest features from source.
+
+## Supported software
 
 | Component                  | Version       | OS                | Arch    | Lang  |
 | ---                        | ---           | ---               | ---     | ---   |
@@ -46,7 +58,7 @@ Supported software:
 | sqldev                     | 4.1           | linux,windows,osx | na      | na    |
 | sqldev-jdk                 | 4.1           | windows           | x64     | na    |
 
-usage:
+## Usage
 
 Each column in the table above represents an argument. e.g. to download Oracle 11gXE, you would run:
 
