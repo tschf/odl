@@ -41,6 +41,96 @@ func GetIcSqlplusResources() []*resource.OracleResource {
 
 	SqlplusResources := []*resource.OracleResource{}
 
+	// 12.2.0.1.0
+
+	SqlplusResources = append(SqlplusResources, &resource.OracleResource{
+		Component:    "instantclient-sqlplus",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-sqlplus-windows.x64-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "windows",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcWinx64,
+	})
+
+	SqlplusResources = append(SqlplusResources, &resource.OracleResource{
+		Component:    "instantclient-sqlplus",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-sqlplus-nt-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "windows",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcWinx86,
+	})
+
+	SqlplusResources = append(SqlplusResources, &resource.OracleResource{
+		Component:    "instantclient-sqlplus",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux-rpm",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx64,
+	})
+
+	SqlplusResources = append(SqlplusResources, &resource.OracleResource{
+		Component:    "instantclient-sqlplus",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.i386.rpm"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux-rpm",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx86,
+	})
+
+	SqlplusResources = append(SqlplusResources, &resource.OracleResource{
+		Component:    "instantclient-sqlplus",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-sqlplus-linux-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx86,
+	})
+
+	SqlplusResources = append(SqlplusResources, &resource.OracleResource{
+		Component:    "instantclient-sqlplus",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx64,
+	})
+
+	// SqlplusResources = append(SqlplusResources, &resource.OracleResource{
+	// 	Component:    "instantclient-sqlplus",
+	// 	Version:      "12.2.0.1.0",
+	// 	File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/122010/instantclient-sqlplus-macos.x64-12.2.0.1.0.zip"},
+	// 	License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+	// 	OS:           "osx",
+	// 	Arch:         arch.X64,
+	// 	Lang:         "na",
+	// 	AcceptCookie: acceptCookieIcOSX,
+	// })
+	//
+	// SqlplusResources = append(SqlplusResources, &resource.OracleResource{
+	// 	Component:    "instantclient-sqlplus",
+	// 	Version:      "12.2.0.1.0",
+	// 	File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/122010/instantclient-sqlplus-macos.x32-12.2.0.1.0.zip"},
+	// 	License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+	// 	OS:           "osx",
+	// 	Arch:         arch.X86,
+	// 	Lang:         "na",
+	// 	AcceptCookie: acceptCookieIcOSX,
+	// })
+
 	// 12.1.0.2.0
 
 	SqlplusResources = append(SqlplusResources, &resource.OracleResource{

@@ -41,6 +41,97 @@ func GetIcODBCResources() []*resource.OracleResource {
 
 	OdbcResources := []*resource.OracleResource{}
 
+	// 12.2.0.1.0
+
+	OdbcResources = append(OdbcResources, &resource.OracleResource{
+		Component:    "instantclient-odbc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-odbc-windows.x64-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "windows",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcWinx64,
+	})
+
+	OdbcResources = append(OdbcResources, &resource.OracleResource{
+		Component:    "instantclient-odbc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-odbc-nt-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "windows",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcWinx86,
+	})
+
+	OdbcResources = append(OdbcResources, &resource.OracleResource{
+		Component:    "instantclient-odbc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-odbc-12.2.0.1.0-1.x86_64.rpm"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux-rpm",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx64,
+	})
+
+	OdbcResources = append(OdbcResources, &resource.OracleResource{
+		Component:    "instantclient-odbc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-odbc-12.2.0.1.0-1.i386.rpm"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux-rpm",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx86,
+	})
+
+	OdbcResources = append(OdbcResources, &resource.OracleResource{
+		Component:    "instantclient-odbc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-odbc-linux-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx86,
+	})
+
+	OdbcResources = append(OdbcResources, &resource.OracleResource{
+		Component:    "instantclient-odbc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-odbc-linux.x64-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx64,
+	})
+
+	// OdbcResources = append(OdbcResources, &resource.OracleResource{
+	// 	Component:    "instantclient-odbc",
+	// 	Version:      "12.2.0.1.0",
+	// 	File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/122010/instantclient-odbc-macos.x64-12.2.0.1.0.zip"},
+	// 	License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+	// 	OS:           "osx",
+	// 	Arch:         arch.X64,
+	// 	Lang:         "na",
+	// 	AcceptCookie: acceptCookieIcOSX,
+	// })
+
+	//
+	// OdbcResources = append(OdbcResources, &resource.OracleResource{
+	// 	Component:    "instantclient-odbc",
+	// 	Version:      "12.2.0.1.0",
+	// 	File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/122010/instantclient-odbc-macos.x32-12.2.0.1.0.zip"},
+	// 	License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+	// 	OS:           "osx",
+	// 	Arch:         arch.X86,
+	// 	Lang:         "na",
+	// 	AcceptCookie: acceptCookieIcOSX,
+	// })
+
 	// 12.1.0.2.0
 
 	OdbcResources = append(OdbcResources, &resource.OracleResource{

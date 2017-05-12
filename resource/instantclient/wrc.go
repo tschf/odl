@@ -41,6 +41,96 @@ func GetIcWrcResources() []*resource.OracleResource {
 
 	WrcResources := []*resource.OracleResource{}
 
+	// 12.2.0.1.0
+
+	WrcResources = append(WrcResources, &resource.OracleResource{
+		Component:    "instantclient-wrc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-tools-windows.x64-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "windows",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcWinx64,
+	})
+
+	WrcResources = append(WrcResources, &resource.OracleResource{
+		Component:    "instantclient-wrc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-tools-nt-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "windows",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcWinx86,
+	})
+
+	WrcResources = append(WrcResources, &resource.OracleResource{
+		Component:    "instantclient-wrc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-tools-12.2.0.1.0-1.x86_64.rpm"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux-rpm",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx64,
+	})
+
+	WrcResources = append(WrcResources, &resource.OracleResource{
+		Component:    "instantclient-wrc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-tools-12.2.0.1.0-1.i386.rpm"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux-rpm",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx86,
+	})
+
+	WrcResources = append(WrcResources, &resource.OracleResource{
+		Component:    "instantclient-wrc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-tools-linux-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx86,
+	})
+
+	WrcResources = append(WrcResources, &resource.OracleResource{
+		Component:    "instantclient-wrc",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-tools-linux.x64-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx64,
+	})
+
+	// WrcResources = append(WrcResources, &resource.OracleResource{
+	//     Component:    "instantclient-wrc",
+	//     Version:      "12.2.0.1.0",
+	//     File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/122010/instantclient-tools-macos.x64-12.2.0.1.0.zip"},
+	//     License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+	//     OS:           "osx",
+	//     Arch:         arch.X64,
+	//     Lang:         "na",
+	//     AcceptCookie: acceptCookieIcOSX,
+	// })
+	//
+	// WrcResources = append(WrcResources, &resource.OracleResource{
+	//     Component:    "instantclient-wrc",
+	//     Version:      "12.2.0.1.0",
+	//     File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/122010/instantclient-tools-macos.x32-12.2.0.1.0.zip"},
+	//     License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+	//     OS:           "osx",
+	//     Arch:         arch.X86,
+	//     Lang:         "na",
+	//     AcceptCookie: acceptCookieIcOSX,
+	// })
+
 	// 12.1.0.2.0
 
 	WrcResources = append(WrcResources, &resource.OracleResource{

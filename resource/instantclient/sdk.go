@@ -41,6 +41,96 @@ func GetIcSdkResources() []*resource.OracleResource {
 
 	SdkResources := []*resource.OracleResource{}
 
+	// 12.2.0.1.0
+
+	SdkResources = append(SdkResources, &resource.OracleResource{
+		Component:    "instantclient-sdk",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-sdk-windows.x64-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "windows",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcWinx64,
+	})
+
+	SdkResources = append(SdkResources, &resource.OracleResource{
+		Component:    "instantclient-sdk",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-sdk-nt-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "windows",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcWinx86,
+	})
+
+	SdkResources = append(SdkResources, &resource.OracleResource{
+		Component:    "instantclient-sdk",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux-rpm",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx64,
+	})
+
+	SdkResources = append(SdkResources, &resource.OracleResource{
+		Component:    "instantclient-sdk",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-devel-12.2.0.1.0-1.i386.rpm"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux-rpm",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx86,
+	})
+
+	SdkResources = append(SdkResources, &resource.OracleResource{
+		Component:    "instantclient-sdk",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-sdk-linux-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux",
+		Arch:         arch.X86,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx86,
+	})
+
+	SdkResources = append(SdkResources, &resource.OracleResource{
+		Component:    "instantclient-sdk",
+		Version:      "12.2.0.1.0",
+		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-sdk-linux.x64-12.2.0.1.0.zip"},
+		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+		OS:           "linux",
+		Arch:         arch.X64,
+		Lang:         "na",
+		AcceptCookie: acceptCookieIcLinuxx64,
+	})
+
+	// SdkResources = append(SdkResources, &resource.OracleResource{
+	// 	Component:    "instantclient-sdk",
+	// 	Version:      "12.2.0.1.0",
+	// 	File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/122010/instantclient-sdk-macos.x64-12.2.0.1.0.zip"},
+	// 	License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+	// 	OS:           "osx",
+	// 	Arch:         arch.X64,
+	// 	Lang:         "na",
+	// 	AcceptCookie: acceptCookieIcOSX,
+	// })
+	//
+	// SdkResources = append(SdkResources, &resource.OracleResource{
+	// 	Component:    "instantclient-sdk",
+	// 	Version:      "12.2.0.1.0",
+	// 	File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/122010/instantclient-sdk-macos.x32-12.2.0.1.0.zip"},
+	// 	License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
+	// 	OS:           "osx",
+	// 	Arch:         arch.X86,
+	// 	Lang:         "na",
+	// 	AcceptCookie: acceptCookieIcOSX,
+	// })
+
 	// 12.1.0.2.0
 
 	SdkResources = append(SdkResources, &resource.OracleResource{
