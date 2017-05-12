@@ -20,43 +20,43 @@ Or, grab the latest release: [https://github.com/tschf/odl/releases](https://git
 
 ## Supported software
 
-| Component                  | Version       | OS                | Arch    | Lang  |
-| ---                        | ---           | ---               | ---     | ---   |
-| apex                       | 4.2 - 5.1     | na                | na      | na,en |
-| db                         | 11gXE         | windows           | x64     | na    |
-| db                         | 11gXE         | linux             | x86,x64 | na    |
-| db                         | 12.1.0.2.0EE  | linux,windows     | x64     | na    |
-| db                         | 12.1.0.2.0SE2 | linux,windows     | x64     | na    |
-| db                         | 12.2.0.1.0    | linux             | x64     | na    |
-| instantclient-basic        | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-basic        | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-basic        | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
-| instantclient-basic-lite   | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-basic-lite   | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-basic-lite   | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
-| instantclient-jdbc         | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-jdbc         | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-jdbc         | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
-| instantclient-odbc         | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-odbc         | 11.2.0.4.0    | linux,windows     | x64,x86 | na    |
-| instantclient-odbc         | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
-| instantclient-sdk          | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-sdk          | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-sdk          | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
-| instantclient-sqlplus      | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-sqlplus      | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-sqlplus      | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
-| instantclient-wrc          | 12.1.0.2.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-wrc          | 11.2.0.4.0    | linux,windows,osx | x64,x86 | na    |
-| instantclient-wrc          | 11.1.0.7.0    | linux,windows     | x64,x86 | na    |
-| java-jdk                   | 8             | linux,windows     | x64,x86 | na    |
-| java-jdk                   | 8             | osx               | x64     | na    |
-| java-jre                   | 8             | linux,windows     | x64,x86 | na    |
-| java-jre                   | 8             | osx               | x64     | na    |
-| ords                       | 3.0 - 3.0.9   | na                | na      | na    |
-| sqlcl                      | 4.2           | na                | na      | na    |
-| sqldev                     | 4.1           | linux,windows,osx | na      | na    |
-| sqldev-jdk                 | 4.1           | windows           | x64     | na    |
+| Component                  | Version       | OS                           | Arch    | Lang  |
+| ---                        | ---           | ---                          | ---     | ---   |
+| apex                       | 4.2 - 5.1     | na                           | na      | na,en |
+| db                         | 11gXE         | windows                      | x64     | na    |
+| db                         | 11gXE         | linux                        | x86,x64 | na    |
+| db                         | 12.1.0.2.0EE  | linux,windows                | x64     | na    |
+| db                         | 12.1.0.2.0SE2 | linux,windows                | x64     | na    |
+| db                         | 12.2.0.1.0    | linux                        | x64     | na    |
+| instantclient-basic        | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-basic        | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-basic        | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-basic-lite   | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-basic-lite   | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-basic-lite   | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-jdbc         | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-jdbc         | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-jdbc         | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-odbc         | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-odbc         | 11.2.0.4.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-odbc         | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-sdk          | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-sdk          | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-sdk          | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-sqlplus      | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-sqlplus      | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-sqlplus      | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-wrc          | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-wrc          | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-wrc          | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| java-jdk                   | 8             | linux,windows                | x64,x86 | na    |
+| java-jdk                   | 8             | osx                          | x64     | na    |
+| java-jre                   | 8             | linux,windows                | x64,x86 | na    |
+| java-jre                   | 8             | osx                          | x64     | na    |
+| ords                       | 3.0 - 3.0.9   | na                           | na      | na    |
+| sqlcl                      | 4.2           | na                           | na      | na    |
+| sqldev                     | 4.1           | linux,windows,osx            | na      | na    |
+| sqldev-jdk                 | 4.1           | windows                      | x64     | na    |
 
 ## Usage
 
