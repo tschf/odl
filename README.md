@@ -52,7 +52,7 @@ Or, grab the latest release: [https://github.com/tschf/odl/releases](https://git
 | instantclient-sqlplus      | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
 | instantclient-sqlplus      | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
 | instantclient-sqlplus      | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
-| instantclient-wrc          | 12.1.0.2.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-wrc          | 12.2.0.1.0    | linux,linux-rpm,windows      | x64,x86 | na    |
 | instantclient-wrc          | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
 | instantclient-wrc          | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
 | instantclient-wrc          | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
