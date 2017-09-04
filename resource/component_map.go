@@ -35,5 +35,6 @@ var (
 		"ords":                     ORDS,
 		"sqlcl":                    SQLCL,
 		"sqldev":                   SQLDEV,
+		"sqldev-jdk":               SQLDEV,
 	}
 )
