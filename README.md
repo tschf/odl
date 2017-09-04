@@ -107,3 +107,21 @@ Beginning download process for db 11gXE
 oracle-xe-11.2.0-1.0.x86_64.rpm.zip: 301.26 MB / 301.26 MB [==============================] 100.00% 5m30s
 Download complete.
 ```
+
+## Installing golang on Linux
+
+To install golang as part of your build process you can use the following snippet:
+```bash
+#!/bin/bash
+set -ev
+
+GO_FILE=go1.8.3.linux-amd64.tar.gz
+
+# https://golang.org/doc/install
+curl -O "https://storage.googleapis.com/golang/${GO_FILE}"
+sudo tar -C /usr/local -xzf ${GO_FILE}
+rm ${GO_FILE}
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:${GOPATH}/bin
+```
