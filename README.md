@@ -61,6 +61,7 @@ Or, grab the latest release: [https://github.com/tschf/odl/releases](https://git
 | java-jre                   | 8             | linux,windows                | x64,x86 | na    |
 | java-jre                   | 8             | osx                          | x64     | na    |
 | ords                       | 3.0 - 3.0.9   | na                           | na      | na    |
+| sqlcl                      | 17.2          | na                           | na      | na    |
 | sqlcl                      | 4.2           | na                           | na      | na    |
 | sqldev                     | 4.1           | linux,windows,osx            | na      | na    |
 | sqldev-jdk                 | 4.1           | windows                      | x64     | na    |

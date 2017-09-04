@@ -16,7 +16,7 @@ func TestLatestVersion(t *testing.T) {
 	}
 
 	buildCmps := strings.Split(latestVersion, ".")
-	const expectedCmpsLen = 6 //4.2.0.17.096.0933
+	const expectedCmpsLen = 5 //17.2.0.184.1230
 
 	if len(buildCmps) != expectedCmpsLen {
 		t.Errorf("Build version (%s) not as expected. Should having 6 components similar to 4.2.0.17.096.0933", latestVersion)
