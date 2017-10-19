@@ -18,7 +18,6 @@ import (
 
 	"golang.org/x/crypto/ssh/terminal"
 
-	"github.com/PuerkitoBio/goquery"
 	"github.com/tschf/odl/resource"
 )
 
@@ -28,8 +27,32 @@ func checkRedirect(req *http.Request, via []*http.Request) error {
 	return nil
 }
 
+func getRequest(method string, path string, requestBody url.Values) *http.Request {
+	req, err := http.NewRequest(method, path, bytes.NewBufferString(requestBody.Encode()))
+	if err != nil {
+		log.Fatal(err)
+	}
+	req.Header.Add("User-Agent", "Mozilla/5.0")
+	if method == http.MethodPost {
+		req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+	}
+
+	return req
+}
+
+func getResponse(req *http.Request, httpClient *http.Client) *http.Response {
+	resp, err := httpClient.Do(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return resp
+}
+
 func SaveResource(res *resource.OracleResource, otnUser string, otnPassword string, skipExisting bool) {
 	var cookies []*http.Cookie
+	var fileResp *http.Response
+
 	cookies = append(cookies, res.AcceptCookie)
 
 	cookieJar, _ := cookiejar.New(nil)
@@ -70,22 +93,15 @@ func SaveResource(res *resource.OracleResource, otnUser string, otnPassword stri
 			}
 		}
 
-		req, _ := http.NewRequest("GET", file, nil)
-		req.Header.Add("User-Agent", "Mozilla/5.0")
-
 		u, _ := url.Parse(file)
 
 		//Set initial jar with a cookie accepting the license agreement
 		//Example taken from: https://gist.github.com/Rabbit52/a8a44c3c4cd514052952
 		cookieJar.SetCookies(u, cookies)
 
-		resp, respErr := client.Do(req)
-		if respErr != nil {
-			fmt.Println("Couldn't read response")
-			log.Fatal(respErr)
-		}
-		defer resp.Body.Close()
-
+		// Check to see if we are requested a file that requires authentication.
+		// First, make sure we have access to the users username and password
+		// and prompt if necessary.
 		if !res.SkipAuth && requiresAuth {
 
 			if len(otnPassword) == 0 {
@@ -95,49 +111,30 @@ func SaveResource(res *resource.OracleResource, otnUser string, otnPassword stri
 				otnPassword = string(consolePass)
 			}
 
-			doc, err := goquery.NewDocumentFromResponse(resp)
-			if err != nil {
-				log.Fatal(err)
-			}
+			fileResp = loginAndGetFile(file, client, otnUser, otnPassword)
+			defer fileResp.Body.Close()
 
-			// https://godoc.org/github.com/PuerkitoBio/goquery
-			pageForms := doc.Find("form")
-
-			//POST example: http://stackoverflow.com/questions/19253469/make-a-url-encoded-post-request-using-http-newrequest
-			authData := url.Values{}
-			pageForms.Find("input").Each(func(index int, el *goquery.Selection) {
-				inputName, _ := el.Attr("name")
-				inputValue, _ := el.Attr("value")
-
-				authData.Set(inputName, inputValue)
-			})
-
-			authData.Set("username", otnUser)
-			authData.Set("password", otnPassword)
-
-			req, _ = http.NewRequest("POST", "https://login.oracle.com/oam/server/sso/auth_cred_submit", bytes.NewBufferString(authData.Encode()))
-			req.Header.Add("User-Agent", "Mozilla/5.0")
-			req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-
-			resp, _ = client.Do(req)
 			requiresAuth = false
+		} else {
+			fileReq := getRequest(http.MethodGet, file, nil)
+			fileResp = getResponse(fileReq, client)
+			defer fileResp.Body.Close()
 		}
 
-		savedFile, err := os.Create(path.Base(file))
-		defer savedFile.Close()
-		if err != nil {
-			log.Fatal(err)
-		}
+		requestTotalSize := fileResp.ContentLength
 
-		requestTotalSize := resp.ContentLength
 		//Set up progress bar
 		progressBar := pb.New64(requestTotalSize)
 		progressBar.SetUnits(pb.U_BYTES)
 		progressBar.Prefix(fmt.Sprintf("%s:", path.Base(file)))
 		progressBar.Start()
 
-		readerWithProgress := progressBar.NewProxyReader(resp.Body)
-
+		readerWithProgress := progressBar.NewProxyReader(fileResp.Body)
+		savedFile, err := os.Create(path.Base(file))
+		defer savedFile.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
 		_, err = io.Copy(savedFile, readerWithProgress)
 		if err != nil {
 			log.Fatal(err)
