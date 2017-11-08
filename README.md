@@ -1,6 +1,6 @@
 # odl (Oracle Download Utility)
 
-**Program Status:** Not currently working. See issue #28
+**Program Status:** Working, but Oracle SSO had a couple of changes in the last few weeks. Monitoring. See issue #28
 
 [![build status](https://travis-ci.org/tschf/odl.svg?branch=master)](https://travis-ci.org/tschf/odl)
 
