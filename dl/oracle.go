@@ -4,9 +4,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
-	"strconv"
 	"strings"
-	"time"
 
 	"github.com/PuerkitoBio/goquery"
 )
@@ -41,42 +39,40 @@ func resubmitResponseForm(resp *http.Response, httpClient *http.Client) *http.Re
 	return formResp
 }
 
-// The login form, which should point at: https://login.oracle.com/oaam_server/loginAuth.do
-// Will have a 4 fields that get sent to the server in a POST request:
-// 1. fk - a unique token that is returned in the form
-// 2. clientOffset - The offset hours from GMT. e.g. Toronto would be -4
-// 3. userid - the otn username
-// 4. pass - the otn password
+// The login form, which should point at: /oam/server/sso/auth_cred_submit
+// Will have a 6 fields that get sent to the server in a POST request:
+// - v
+// - OAM_REQ
+// - site2pstoretoken
+// - locale
+// - ssousername
+// - password
 func submitLoginForm(oamLoginPageResp *http.Response, httpClient *http.Client, otnUser string, otnPassword string) *http.Response {
 	goqueryDoc, err := goquery.NewDocumentFromResponse(oamLoginPageResp)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	loginForm := goqueryDoc.Find("form")
 
 	loginFormData := url.Values{}
 	loginAction, _ := loginForm.Attr("action")
 	loginAction = loginURIPrefix + loginAction
 
-	// 1. fk
-	fk := loginForm.Find("input[name='fk']")
-	fkVal, _ := fk.Attr("value")
-	loginFormData.Set("fk", fkVal)
+	loginForm.Find("input").Each(func(index int, el *goquery.Selection) {
+		inputName, _ := el.Attr("name")
+		inputValue, _ := el.Attr("value")
 
-	// 2. clientOffset
-	// The JavaScript function on the page looks like:
-	// var time = new Date();
-	// var offset = (time.getTimezoneOffset() / 60 * -1);
-	t := time.Now()
-	_, z := t.Zone()
-	offset := strconv.Itoa(z / 60 / 60)
-	loginFormData.Set("clientOffset", offset)
+		if len(inputName) > 0 {
+			loginFormData.Set(inputName, inputValue)
+		}
+	})
 
-	// 3. userid
-	loginFormData.Set("userid", otnUser)
-
-	// 4. pass
-	loginFormData.Set("pass", otnPassword)
+	// The login form has fields in the input element names:
+	// - ssousername
+	// - password
+	loginFormData.Set("ssousername", otnUser)
+	loginFormData.Set("password", otnPassword)
 
 	loginReq := getRequest(http.MethodPost, loginAction, loginFormData)
 	loginResp := getResponse(loginReq, httpClient)
@@ -87,38 +83,23 @@ func submitLoginForm(oamLoginPageResp *http.Response, httpClient *http.Client, o
 // When login is required
 func loginAndGetFile(file string, httpClient *http.Client, otnUser string, otnPassword string) *http.Response {
 
+	// Request the file, e.g. https://edelivery.oracle.com/akam/otn/java/appexpress/apex_5.1.zip
+	// This will result in HTTP 302 to: /oam/server/osso_login?..
+	// This page contains a form, with the action to: /mysso/signon.jsp
 	fileRequest := getRequest(http.MethodGet, file, nil)
-
 	resp := getResponse(fileRequest, httpClient)
 	defer resp.Body.Close()
 
-	// First response should contain a form that is expected to be posted to
-	// https://login.oracle.com:443/oaam_server/oamLoginPage.jsp
-	// It doesn't contain any login credentials, but contains a few bits of data
-	// for the fields:
-	// - TapSubmitURL
-	// - tap_token
-	// - OAM_REQ
+	// Here, we post the form: /mysso/signon.jsp with all the input elements.
+	// The response contains another form
 	oamLoginPageResp := resubmitResponseForm(resp, httpClient)
 	defer oamLoginPageResp.Body.Close()
 
 	// Once that is returned, a login form is returned where we actually send
 	// the login (username and password) data to.
+	// This is the last piece that will have a redirect to download the file.
+	// (at least, until things change again)
 	loginAuthResp := submitLoginForm(oamLoginPageResp, httpClient, otnUser, otnPassword)
-	defer loginAuthResp.Body.Close()
 
-	// Then we will submit our login data. Assuming authentication is valid
-	// the next part is to send a GET request to:
-	// https://login.oracle.com:443/oaam_server/authJump.do?jump=false
-	// In the browser, this is achieve by way of a meta refresh tag. When requesting
-	// this resource, it issues a 302 and return the results of the page at:
-	// https://login.oracle.com:443/oaam_server/updateLoginStatus.do
-	// Which in turns contains another form to submit.
-	authJumpReq := getRequest(http.MethodGet, "https://login.oracle.com:443/oaam_server/authJump.do?jump=false", nil)
-	authJumpResp := getResponse(authJumpReq, httpClient)
-	defer authJumpResp.Body.Close()
-
-	finalResp := resubmitResponseForm(authJumpResp, httpClient)
-
-	return finalResp
+	return loginAuthResp
 }
