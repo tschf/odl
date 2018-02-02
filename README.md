@@ -46,6 +46,9 @@ Or, grab the latest release: [https://github.com/tschf/odl/releases](https://git
 | instantclient-odbc         | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
 | instantclient-odbc         | 11.2.0.4.0    | linux,linux-rpm,windows      | x64,x86 | na    |
 | instantclient-odbc         | 11.1.0.7.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-precompiler  | 12.2.0.1.0    | linux,linux-rpm,windows      | x64,x86 | na    |
+| instantclient-precompiler  | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
+| instantclient-precompiler  | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
 | instantclient-sdk          | 12.2.0.1.0    | linux,linux-rpm,windows      | x64,x86 | na    |
 | instantclient-sdk          | 12.1.0.2.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
 | instantclient-sdk          | 11.2.0.4.0    | linux,linux-rpm,windows,osx  | x64,x86 | na    |
