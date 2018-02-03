@@ -46,7 +46,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 	BasicResources = append(BasicResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.2.0.1.0",
-		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-precomp-windows.x64-12.2.0.1.0.zip "},
+		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-precomp-windows.x64-12.2.0.1.0.zip"},
 		License:      "http://www.oracle.com/technetwork/licenses/distribution-license-152002.html",
 		OS:           "windows",
 		Arch:         arch.X64,
