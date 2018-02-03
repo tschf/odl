@@ -39,11 +39,11 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		Domain: ".oracle.com",
 	}
 
-	BasicResources := []*resource.OracleResource{}
+	PrecompilerResources := []*resource.OracleResource{}
 
 	// 12.2.0.1.0
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.2.0.1.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-precomp-windows.x64-12.2.0.1.0.zip"},
@@ -54,7 +54,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.2.0.1.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/122010/instantclient-precomp-nt-12.2.0.1.0.zip"},
@@ -65,7 +65,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.2.0.1.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-precomp-12.2.0.1.0-1.x86_64.rpm"},
@@ -76,7 +76,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.2.0.1.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/oracle-instantclient12.2-precomp-12.2.0.1.0-1.i386.rpm"},
@@ -87,7 +87,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx86,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.2.0.1.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-precomp-linux-12.2.0.1.0.zip"},
@@ -98,7 +98,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx86,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.2.0.1.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/122010/instantclient-precomp-linux.x64-12.2.0.1.0.zip"},
@@ -111,7 +111,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 
 	// 12.1.0.2.0
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.1.0.2.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/121020/instantclient-precomp-windows.x64-12.1.0.2.0.zip"},
@@ -122,7 +122,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.1.0.2.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/121020/instantclient-precomp-nt-12.1.0.2.0.zip"},
@@ -133,7 +133,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.1.0.2.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/oracle-instantclient12.1-precomp-12.1.0.2.0-1.x86_64.rpm"},
@@ -144,7 +144,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.1.0.2.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/oracle-instantclient12.1-precomp-12.1.0.2.0-1.i386.rpm"},
@@ -155,7 +155,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx86,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.1.0.2.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/instantclient-precomp-linux-12.1.0.2.0.zip"},
@@ -166,7 +166,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx86,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.1.0.2.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/121020/instantclient-precomp-linux.x64-12.1.0.2.0.zip"},
@@ -177,7 +177,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.1.0.2.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/121020/instantclient-precomp-macos.x64-12.1.0.2.0.zip"},
@@ -188,7 +188,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcOSX,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "12.1.0.2.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/121020/instantclient-precomp-macos.x32-12.1.0.2.0.zip"},
@@ -201,7 +201,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 
 	// 11.2.0.4.0
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "11.2.0.4.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/11204/instantclient-precomp-windows.x64-11.2.0.4.0.zip"},
@@ -212,7 +212,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcWinx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "11.2.0.4.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/nt/instantclient/11204/instantclient-precomp-nt-11.2.0.4.0.zip"},
@@ -223,7 +223,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcWinx86,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "11.2.0.4.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm"},
@@ -234,7 +234,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "11.2.0.4.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/instantclient-precomp-linux.x64-11.2.0.4.0.zip"},
@@ -245,7 +245,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "11.2.0.4.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/oracle-instantclient11.2-precomp-11.2.0.4.0-1.i386.rpm"},
@@ -256,7 +256,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "11.2.0.4.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/linux/instantclient/11204/instantclient-precomp-linux-11.2.0.4.0.zip"},
@@ -267,7 +267,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcLinuxx64,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "11.2.0.4.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/11204/instantclient-precomp-macos.x64-11.2.0.4.0.zip"},
@@ -278,7 +278,7 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcOSX,
 	})
 
-	BasicResources = append(BasicResources, &resource.OracleResource{
+	PrecompilerResources = append(PrecompilerResources, &resource.OracleResource{
 		Component:    "instantclient-precompiler",
 		Version:      "11.2.0.4.0",
 		File:         []string{"https://edelivery.oracle.com/akam/otn/mac/instantclient/11204/instantclient-precomp-macos.x32-11.2.0.4.0.zip"},
@@ -289,5 +289,5 @@ func GetIcPrecompilerResources() []*resource.OracleResource {
 		AcceptCookie: acceptCookieIcOSX,
 	})
 
-	return BasicResources
+	return PrecompilerResources
 }
