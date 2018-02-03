@@ -35,6 +35,7 @@ func FindResource(componentName string, version string, os string, arch arch.Arc
 		componentResources = append(componentResources, instantclient.GetIcSdkResources()...)
 		componentResources = append(componentResources, instantclient.GetIcSqlplusResources()...)
 		componentResources = append(componentResources, instantclient.GetIcWrcResources()...)
+		componentResources = append(componentResources, instantclient.GetIcPrecompilerResources()...)
 	case resource.JAVA:
 		componentResources = java.GetJdkResources()
 		componentResources = append(componentResources, java.GetJreResources()...)
